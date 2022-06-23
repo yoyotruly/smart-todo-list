@@ -18,7 +18,7 @@
 
 
 ## Information Architecture
-![ia](information-architecture.png)
+![ia](images/information-architecture.png)
 ## User Flow
 > TODO: insert user flow diagram
 ## ERD
