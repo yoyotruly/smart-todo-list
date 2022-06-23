@@ -8,11 +8,14 @@
 ## User Stories & Acceptance Criteria
 | User Story | Acceptance Criteria |
 | --- | --- |
-| **As a** new user, **I want to** sign up, **so that** I can use the app | criteria |
-| **As a** logged-in user, **I want to** update my profile, **so that** I can update my username or password | criteria |
-| **As a** logged-in user, **I want to** add a task, **so that** I can do it later AND the task auto-categorizes into four categories | criteria |
-| **As a** logged-in user, **I want to** change the category of a task when it's mis-categorized, **so that** I can refer to it from the correct list | criteria |
-| **As a** logged-in user, **I want to** set the priority of a task, **so that** I can check all my high-priority tasks in one place | criteria |
+| **As a** new user,<br>**I want to** sign up,<br>**So that** I can use the app. | **Given that** I'm on the new user registration page,<br>**When** I fill in my email, password and click the `Register` button,<br>**Then** I can log in with these credentials and start using the app. |
+| **As a** logged-in user,<br>**I want to** update my profile,<br>**So that** I can update my user info. | **Given that** I'm logged in and on the `Profile` page,<br>**When** I change my user info and click the `Save` button,<br>**Then** the updated info is shown in the app. |
+| **As a** logged-in user,<br>**I want to** add a task,<br>**So that** I can refer to it later AND the app should suggest an appropriate category to label the task. | **Given that** I'm logged in and added text to a task,<br>**When** I click the `Add` button,<br>**Then** the task is added to the list with an auto-populated category label. |
+| **As a** logged-in user,<br>**I want to** change the category of a task when it's mis-categorized,<br>**So that** I can refer to it from the correct list. | **Given that** I just added a task and a wrong label is assigned to it,<br>**When** I click on the `label`,<br>**Then** it should show me a dropdown with available options and allow me to choose another one. |
+| **As a** logged-in user,<br>**I want to** set the priority of a task,<br>**So that** I can check all my high-priority tasks in one place. | **Given that** I have added tasks with priority = `high`,<br>**When** I click on the `important` tab,<br>**Then** it should show me all the high-priority tasks on the page. |
+| **As a** logged-in user,<br>**I want to** mark a task as complete,<br>**So that** I can keep track of my to-dos. | **Given that** I have a to-do item,<br>**When** I click on the checkbox at the beginning of the task,<br>**Then** it should mark the task as complete with a line striked through the title and add the task to the `Done` page. |
+| **As a** logged-in user,<br>**I want to** view tasks per their category,<br>**So that** I can better organize them. | **Given that** I have added tasks labeled with the available categories,<br>**When** I click on category tab from the home page,<br>**Then** it should show me all the tasks with that label on the page. |
+
 
 ## Information Architecture
 ![ia](information-architecture.png)
