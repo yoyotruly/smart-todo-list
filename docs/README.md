@@ -1,7 +1,6 @@
 # Smart Todo List App Design Doc
 ## Table of Content
-- [User Stories & Acceptance Criteria](#user-stories-acceptance-criteria)
-- [User Scenarios](#user-scenarios)
+- [User Stories & Acceptance Criteria](#user-stories--acceptance-criteria)
 - [Information Architecture](#information-architecture)
 - [User Flow](#user-flow)
 - [ERD](#erd)
