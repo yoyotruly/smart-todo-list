@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS tasks CASCADE;
+CREATE TABLE tasks (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  priority_id INTEGER REFERENCES priorities(id) ON DELETE CASCADE,
+  label_id INTEGER REFERENCES labels(id) ON DELETE CASCADE,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  due_date DATE,
+  created_at TIMESTAMP DEFAULT NOW(),
+  is_complete BOOLEAN DEFAULT FALSE,
+  is_active BOOLEAN DEFAULT TRUE
+);
