@@ -25,4 +25,19 @@
 ![ERD](images/erd.png)
 
 ## Planned Routes
-> TODO: insert routes and methods
+| Method | Route | Description
+| ---       | ---              | ---                 |
+| `GET`     | `/users`         | Get all users       |
+| `GET`     | `/users/:id`     | Get user by id      |
+| `POST`    | `/users`         | Create new user     |
+| `PUT`     | `/users/:id`     | Edit user info      |
+| `DELETE`  | `/users/:id`     | Delete account      |
+| `GET`     | `/tasks`         | Get all tasks       |
+| `GET`     | `/tasks/:id`     | Get task by id      |
+| `POST`    | `/tasks`         | Create new task     |
+| `PUT`     | `/tasks/:id`     | Edit task info      |
+| `DELETE`  | `/tasks/:id`     | Delete task         |
+| `GET`     | `/priorities`    | Get all priorities  |
+| `GET`     | `/priorities:id` | Get priority by id  |
+| `GET`     | `/labels`        | Get all labels      |
+| `GET`     | `/labels/:id`    | Get label by id     |
