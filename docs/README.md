@@ -22,6 +22,13 @@
 ## User Flow
 ![user flow](images/user-flow.png)
 ## ERD
+**Nouns**
+- users
+- tasks
+- categories
+- priorities
+
 > TODO: insert ERD
+
 ## Planned Routes
 > TODO: insert routes and methods
