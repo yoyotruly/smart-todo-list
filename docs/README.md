@@ -20,7 +20,7 @@
 ## Information Architecture
 ![ia](images/information-architecture.png)
 ## User Flow
-> TODO: insert user flow diagram
+![user flow](images/user-flow.png)
 ## ERD
 > TODO: insert ERD
 ## Planned Routes
