@@ -27,9 +27,13 @@
 ## Planned Routes
 | Method | Route | Description
 | ---       | ---              | ---                 |
-| `GET`     | `/users`         | Get all users       |
+| `GET`     | `/`              | Get home page       |
+| `GET`     | `/register`      | Get sign up page    |
+| `POST`    | `/register`      | Register new user   |
+| `GET`     | `/login`         | Get login page      |
+| `POST`    | `/login`         | Log in user         |
+| `POST`    | `/logout`        | Log out user        |
 | `GET`     | `/users/:id`     | Get user by id      |
-| `POST`    | `/users`         | Create new user     |
 | `PUT`     | `/users/:id`     | Edit user info      |
 | `DELETE`  | `/users/:id`     | Delete account      |
 | `GET`     | `/tasks`         | Get all tasks       |
@@ -37,7 +41,18 @@
 | `POST`    | `/tasks`         | Create new task     |
 | `PUT`     | `/tasks/:id`     | Edit task info      |
 | `DELETE`  | `/tasks/:id`     | Delete task         |
-| `GET`     | `/priorities`    | Get all priorities  |
-| `GET`     | `/priorities:id` | Get priority by id  |
-| `GET`     | `/labels`        | Get all labels      |
-| `GET`     | `/labels/:id`    | Get label by id     |
+
+
+## Wireframes 
+### Welcome Page:
+![welcome page](images/welcome-page.png)
+### Login Page:
+![login page](images/login-page.png)
+### Register Page:
+![register page](images/register-page.png)
+### Home Page:
+![home page](images/home-page.png)
+### Profile Page:
+![profile page](images/profile-page.png)
+### Add a New Task:
+![add new task](images/add-new-task.png)
