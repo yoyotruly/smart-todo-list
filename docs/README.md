@@ -29,11 +29,11 @@
 | ---       | ---              | ---                 |
 | `GET`     | `/`              | Get home page       |
 | `GET`     | `/register`      | Get sign up page    |
-| `POST`    | `/register`      | Create new user     |
+| `POST`    | `/register`      | Register new user   |
 | `GET`     | `/login`         | Get login page      |
-| `POST`    | `/login`         | Login user          |
+| `POST`    | `/login`         | Log in user         |
+| `POST`    | `/logout`        | Log out user        |
 | `GET`     | `/users/:id`     | Get user by id      |
-| `POST`    | `/users`         | Create new user     |
 | `PUT`     | `/users/:id`     | Edit user info      |
 | `DELETE`  | `/users/:id`     | Delete account      |
 | `GET`     | `/tasks`         | Get all tasks       |
@@ -41,11 +41,7 @@
 | `POST`    | `/tasks`         | Create new task     |
 | `PUT`     | `/tasks/:id`     | Edit task info      |
 | `DELETE`  | `/tasks/:id`     | Delete task         |
-| `GET`     | `/priorities`    | Get all priorities  |
-| `GET`     | `/priorities:id` | Get priority by id  |
-| `GET`     | `/labels`        | Get all labels      |
-| `GET`     | `/labels/:id`    | Get label by id     |
-| `POST`    | `/logout`        | Logout user         |
+
 
 ## Wireframes 
 ### Welcome Page:
