@@ -46,3 +46,17 @@
 | `GET`     | `/labels`        | Get all labels      |
 | `GET`     | `/labels/:id`    | Get label by id     |
 | `POST`    | `/logout`        | Logout user         |
+
+## Wireframes 
+### Welcome Page:
+![welcome page](images/welcome-page.png)
+### Login Page:
+![login page](images/login-page.png)
+### Register Page:
+![register page](images/register-page.png)
+### Home Page:
+![home page](images/home-page.png)
+### Profile Page:
+![profile page](images/profile-page.png)
+### Add a New Task:
+![add new task](images/add-new-task.png)
