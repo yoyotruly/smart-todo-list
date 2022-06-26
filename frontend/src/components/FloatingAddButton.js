@@ -8,7 +8,7 @@ export default function FloatingActionButtons() {
       aria-label="add"
       sx={{
         position: "absolute",
-        left: 20,
+        left: 30,
         bottom: 20,
         zIndex: (theme) => theme.zIndex.drawer + 1
       }}

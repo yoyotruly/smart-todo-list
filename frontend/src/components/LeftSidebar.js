@@ -31,7 +31,7 @@ export default function LeftSidebar() {
 
         <Toolbar />
 
-        <List>
+        <List dense>
 
           <ListItem key={"Overview"}>
             <ListItemButton>
@@ -81,6 +81,7 @@ export default function LeftSidebar() {
         </List>
 
         <List
+          dense
           sx={{marginTop: "30px"}}
         >
           <ListItem key={"To Eat"}>
