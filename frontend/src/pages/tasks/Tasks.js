@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 
 import TopBar from "../../components/TopBar"
-import Sidebar from "../../components/Sidebar"
+import LeftSidebar from "../../components/LeftSidebar"
 import MainContent from '../../components/MainContent';
 
 function Tasks() {
@@ -9,7 +9,7 @@ function Tasks() {
     <Box sx={{ display: 'flex' }}>
 
       <TopBar />
-      <Sidebar />
+      <LeftSidebar />
       <MainContent />
 
     </Box>
