@@ -6,7 +6,7 @@ import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
 
-const drawerWidth = 400;
+const rightSidebarWidth = 400;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -16,7 +16,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginRight: -drawerWidth,
+    marginRight: -rightSidebarWidth,
     ...(open && {
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
@@ -43,10 +43,10 @@ export default function RightSidebar() {
       </Main>
       <Drawer
         sx={{
-          width: drawerWidth,
+          width: rightSidebarWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: rightSidebarWidth,
           },
         }}
         variant="persistent"

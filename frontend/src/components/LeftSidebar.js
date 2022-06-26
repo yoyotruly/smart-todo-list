@@ -8,16 +8,16 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
-const drawerWidth = 240;
+const leftSidebarWidth = 240;
 
 export default function LeftSidebar() {
   return (
       <Drawer
         sx={{
-          width: drawerWidth,
+          width: leftSidebarWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: leftSidebarWidth,
             boxSizing: 'border-box',
           },
         }}
