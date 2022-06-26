@@ -69,6 +69,7 @@ export default function TopBar() {
   return (
     <AppBar
       position="fixed"
+      elevation={0}
       sx={{
         width: `calc(100% - ${drawerWidth}px)`,
         ml: `${drawerWidth}px`,
