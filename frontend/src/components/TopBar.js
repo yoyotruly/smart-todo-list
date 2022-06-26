@@ -1,8 +1,22 @@
+import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import Avatar from '@mui/material/Avatar';
+import Badge from '@mui/material/Badge';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Toolbar from '@mui/material/Toolbar';
+import bob from '../assets/bob.png';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import Divider from '@mui/material/Divider';
+import Tooltip from '@mui/material/Tooltip';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import Settings from '@mui/icons-material/Settings';
+import Logout from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -47,6 +61,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function TopBar() {
+  const [anchorElUserMenu, setAnchorElUserMenu] = React.useState(null);
+  const open = Boolean(anchorElUserMenu);
+  const handleClickUserMenu = (event) => setAnchorElUserMenu(event.currentTarget)
+  const handleCloseUserMenu = () => setAnchorElUserMenu(null);
+
   return (
     <AppBar
       position="fixed"
@@ -57,24 +76,110 @@ export default function TopBar() {
       }}
     >
 
-      <Toolbar disableGutters>
+      <Toolbar
+        disableGutters
+        sx={{
+          display: "flex"
+        }}
+      >
 
-        <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
+        <Search sx={{flexGrow: 1}}>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+          />
         </Search>
+
+        <IconButton
+          size="large"
+          aria-label="show 3 new notifications"
+          color="inherit"
+        >
+          <Badge badgeContent={3} color="error">
+            <NotificationsNoneIcon />
+          </Badge>
+        </IconButton>
+
+        <Tooltip title="Account settings">
+          <IconButton
+            onClick={handleClickUserMenu}
+            size="small"
+            sx={{ ml: 2 }}
+            aria-controls={open ? 'account-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+          >
+            <Avatar alt="Remy Sharp" src={bob} />
+          </IconButton>
+        </Tooltip>
+
+        <Menu
+          anchorEl={anchorElUserMenu}
+          id="account-menu"
+          open={open}
+          onClose={handleCloseUserMenu}
+          onClick={handleCloseUserMenu}
+          PaperProps={{
+            elevation: 0,
+            sx: {
+              overflow: 'visible',
+              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+              mt: 1.5,
+              '& .MuiAvatar-root': {
+                width: 32,
+                height: 32,
+                ml: -0.5,
+                mr: 1,
+              },
+              '&:before': {
+                content: '""',
+                display: 'block',
+                position: 'absolute',
+                top: 0,
+                right: 14,
+                width: 10,
+                height: 10,
+                bgcolor: 'background.paper',
+                transform: 'translateY(-50%) rotate(45deg)',
+                zIndex: 0,
+              },
+            },
+          }}
+          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        >
+          <MenuItem>
+            <Avatar /> Profile
+          </MenuItem>
+          <MenuItem>
+            <Avatar /> My account
+          </MenuItem>
+          <Divider />
+          <MenuItem>
+            <ListItemIcon>
+              <PersonAdd fontSize="small" />
+            </ListItemIcon>
+            Add another account
+          </MenuItem>
+          <MenuItem>
+            <ListItemIcon>
+              <Settings fontSize="small" />
+            </ListItemIcon>
+            Settings
+          </MenuItem>
+          <MenuItem>
+            <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
+            Logout
+          </MenuItem>
+        </Menu>
 
       </Toolbar>
 
     </AppBar>
   )
 }
-
-
-
-
