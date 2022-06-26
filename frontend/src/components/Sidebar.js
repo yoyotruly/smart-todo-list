@@ -24,11 +24,12 @@ export default function Sidebar() {
         variant="permanent"
         anchor="left"
       >
+
         <Toolbar />
 
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem key={text}>
               <ListItemButton>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -43,7 +44,7 @@ export default function Sidebar() {
           sx={{marginTop: "30px"}}
         >
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem key={text}>
               <ListItemButton>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
