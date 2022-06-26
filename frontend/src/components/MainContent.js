@@ -6,6 +6,8 @@ import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
 
+import TaskList from './TaskList';
+
 const rightSidebarWidth = 400;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -36,11 +38,11 @@ export default function RightSidebar() {
     <Box sx={{ display: 'flex' }}>
       <Main open={open}>
         <Toolbar />
-        <Typography paragraph>
-          Text
-        </Typography>
         <Button variant="text" onClick={handleOpen}>Show Details</Button>
+        <TaskList />
+
       </Main>
+
       <Drawer
         sx={{
           width: rightSidebarWidth,
