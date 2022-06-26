@@ -1,11 +1,18 @@
+import Box from '@mui/material/Box';
+
+import TopBar from "../../components/TopBar"
 import Sidebar from "../../components/Sidebar"
+import MainContent from '../../components/MainContent';
 
 function Tasks() {
   return (
-    <div>
+    <Box sx={{ display: 'flex' }}>
+
+      <TopBar />
       <Sidebar />
-      This is tasks overview page
-    </div>
+      <MainContent />
+
+    </Box>
   )
 }
 
