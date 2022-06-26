@@ -1,7 +1,6 @@
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -26,7 +25,7 @@ export default function Sidebar() {
         anchor="left"
       >
         <Toolbar />
-        <Divider />
+
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem key={text} disablePadding>
@@ -39,8 +38,10 @@ export default function Sidebar() {
             </ListItem>
           ))}
         </List>
-        <Divider />
-        <List>
+
+        <List
+          sx={{marginTop: "30px"}}
+        >
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
