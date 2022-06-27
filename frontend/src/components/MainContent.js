@@ -3,12 +3,12 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
 
-import TaskList from './TaskList';
+import TaskList from "./TaskList";
+import TaskDetail from "./TaskDetail";
 
-const rightSidebarWidth = 400;
+const rightSidebarWidth = 700;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -55,12 +55,12 @@ export default function RightSidebar() {
         anchor="right"
         open={open}
       >
-        <Toolbar />
 
-        <Typography paragraph>
-          Details
-        </Typography>
-        <Button variant="text" onClick={handleClose}>Close</Button>
+        <Toolbar />
+        <TaskDetail />
+        <Button variant="text" onClick={handleClose}>
+          Close
+        </Button>
 
       </Drawer>
     </Box>

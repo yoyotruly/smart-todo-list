@@ -5,6 +5,7 @@ import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 export default function TaskList() {
   return (
@@ -17,15 +18,13 @@ export default function TaskList() {
 
       <ListItem alignItems="flex-start">
         <ListItemIcon>
-          <RadioButtonUncheckedIcon fontSize='large'/>
+          <CheckCircleIcon fontSize="large" color="primary"/>
         </ListItemIcon>
         <ListItemText
           primary="Buy ugly vegetables from the Farmer's Market this weekend"
           secondary={
             <>
-              Jan 7, 2022
-              High Priority
-              To Buy
+              Jan 7, 2022 | High Priority | To Buy
             </>
           }
         />
@@ -41,9 +40,7 @@ export default function TaskList() {
           primary="Rewatch Hawk and Chick with the kids"
           secondary={
             <>
-              Jan 10, 2022
-              High Priority
-              To Watch
+              Jan 10, 2022 | High Priority | To Watch
             </>
           }
         />
