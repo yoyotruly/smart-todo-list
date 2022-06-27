@@ -152,7 +152,10 @@ export default function TopBar() {
           transformOrigin={{ horizontal: 'right', vertical: 'top' }}
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
-          <MenuItem>
+          <MenuItem
+            component="a"
+            href="/profile/1"
+          >
             <Avatar /> Profile
           </MenuItem>
           <MenuItem>
@@ -171,7 +174,10 @@ export default function TopBar() {
             </ListItemIcon>
             Settings
           </MenuItem>
-          <MenuItem>
+          <MenuItem
+            component="a"
+            href="/"
+          >
             <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>

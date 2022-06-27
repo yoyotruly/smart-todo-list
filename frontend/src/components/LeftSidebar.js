@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
@@ -33,7 +34,11 @@ export default function LeftSidebar() {
 
         <List dense>
 
-          <ListItem key={"Overview"}>
+          <ListItem
+            key={"Overview"}
+            component="a"
+            href="/tasks"
+          >
             <ListItemButton>
               <ListItemIcon>
                 <SummarizeOutlinedIcon />
@@ -60,7 +65,11 @@ export default function LeftSidebar() {
             </ListItemButton>
           </ListItem>
 
-          <ListItem key={"Important"}>
+          <ListItem
+            key={"Important"}
+            component="a"
+            href="/tasks/high"
+          >
             <ListItemButton>
               <ListItemIcon>
                 <StarBorderOutlinedIcon />
@@ -69,7 +78,11 @@ export default function LeftSidebar() {
             </ListItemButton>
           </ListItem>
 
-          <ListItem key={"Done"}>
+          <ListItem
+            key={"Done"}
+            component="a"
+            href="/tasks/done"
+          >
             <ListItemButton>
               <ListItemIcon>
                 <EventAvailableOutlinedIcon />
@@ -84,7 +97,11 @@ export default function LeftSidebar() {
           dense
           sx={{marginTop: "30px"}}
         >
-          <ListItem key={"To Eat"}>
+          <ListItem
+            key={"To Eat"}
+            component="a"
+            href="/tasks/1"
+          >
             <ListItemButton>
               <ListItemIcon>
                 <SquareRoundedIcon color='primary'/>
@@ -93,7 +110,11 @@ export default function LeftSidebar() {
             </ListItemButton>
           </ListItem>
 
-          <ListItem key={"To Buy"}>
+          <ListItem
+            key={"To Buy"}
+            component="a"
+            href="/tasks/2"
+          >
             <ListItemButton>
               <ListItemIcon>
                 <SquareRoundedIcon color="warning"/>
@@ -102,7 +123,11 @@ export default function LeftSidebar() {
             </ListItemButton>
           </ListItem>
 
-          <ListItem key={"To Read"}>
+          <ListItem
+            key={"To Read"}
+            component="a"
+            href="/tasks/3"
+          >
             <ListItemButton>
               <ListItemIcon>
                 <SquareRoundedIcon color="secondary"/>
@@ -111,7 +136,11 @@ export default function LeftSidebar() {
             </ListItemButton>
           </ListItem>
 
-          <ListItem key={"To Watch"}>
+          <ListItem
+            key={"To Watch"}
+            component="a"
+            href="/tasks/4"
+          >
             <ListItemButton>
               <ListItemIcon>
                 <SquareRoundedIcon color="success"/>

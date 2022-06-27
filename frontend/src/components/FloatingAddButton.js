@@ -12,6 +12,8 @@ export default function FloatingActionButtons() {
         bottom: 20,
         zIndex: (theme) => theme.zIndex.drawer + 1
       }}
+      component="a"
+      href="/tasks/new"
     >
       <AddIcon />
     </Fab>
