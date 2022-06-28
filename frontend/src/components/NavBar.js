@@ -21,8 +21,8 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            Features Pricing Contact Help
           </Typography>
           <Button color="inherit" href="/login">Login</Button>
           <Button color="inherit" href="/register">Register</Button>
