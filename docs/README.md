@@ -4,7 +4,7 @@
 - [Information Architecture](#information-architecture)
 - [User Flow](#user-flow)
 - [Wireframes](#wireframes)
-- [Architecture Design](#architecture-design)
+- [Architecture](#architecture)
 - [ERD](#erd)
 - [Planned Routes](#planned-routes)
 
@@ -32,14 +32,14 @@
 ![login page](images/login-page.png)
 ### Register Page:
 ![register page](images/register-page.png)
-### Home Page:
-![home page](images/home-page.png)
+### Tasks Overview Page:
+![Tasks Overview Page](images/home-page.png)
 ### Profile Page:
 ![profile page](images/profile-page.png)
 ### Add a New Task:
 ![add new task](images/add-new-task.png)
 
-## Architecture Design
+## Architecture
 ![architecture](images/architecture.png)
 
 ## ERD
@@ -65,10 +65,9 @@
 | `/api/users/:userId`          | `PUT`    | Update user info by id    |
 | `/api/tasks`                  | `GET`    | Get all tasks             |
 | `/api/tasks?label=<labelId>`  | `GET`    | Get all tasks by label id |
-| `/api/tasks?priority=<priorityId>`  | `GET`    | Get all tasks by priority id |
-| `/api/tasks?is_complete=<boolean>`  | `GET`    | Get all tasks by completion status |
+| `/api/tasks?priority=<priorityId>` | `GET`    | Get all tasks by priority id |
+| `/api/tasks?is_complete=<boolean>` | `GET`    | Get all tasks by completion status |
 | `/api/tasks`                  | `POST`   | Create new task           |
 | `/api/tasks/:taskId`          | `GET`    | Get task by id            |
 | `/api/tasks/:taskId`          | `PUT`    | Update task info by id    |
 | `/api/tasks/:taskId`          | `DELETE` | Delete task by id         |
-| `/api/profile/:userId`        | `GET`    | User profile page         |
