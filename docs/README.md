@@ -3,8 +3,11 @@
 - [User Stories & Acceptance Criteria](#user-stories--acceptance-criteria)
 - [Information Architecture](#information-architecture)
 - [User Flow](#user-flow)
+- [Wireframes](#wireframes)
+- [Architecture Design](#architecture-design)
 - [ERD](#erd)
 - [Planned Routes](#planned-routes)
+
 ## User Stories & Acceptance Criteria
 | User Story | Acceptance Criteria |
 | --- | --- |
@@ -21,27 +24,6 @@
 ![ia](images/information-architecture.png)
 ## User Flow
 ![user flow](images/user-flow.png)
-## ERD
-![ERD](images/erd.png)
-
-## Planned Routes
-| Method | Route | Description
-| ---       | ---              | ---                 |
-| `GET`     | `/`              | Get home page       |
-| `GET`     | `/register`      | Get sign up page    |
-| `POST`    | `/register`      | Register new user   |
-| `GET`     | `/login`         | Get login page      |
-| `POST`    | `/login`         | Log in user         |
-| `POST`    | `/logout`        | Log out user        |
-| `GET`     | `/users/:id`     | Get user by id      |
-| `PUT`     | `/users/:id`     | Edit user info      |
-| `DELETE`  | `/users/:id`     | Delete account      |
-| `GET`     | `/tasks`         | Get all tasks       |
-| `GET`     | `/tasks/:id`     | Get task by id      |
-| `POST`    | `/tasks`         | Create new task     |
-| `PUT`     | `/tasks/:id`     | Edit task info      |
-| `DELETE`  | `/tasks/:id`     | Delete task         |
-
 
 ## Wireframes 
 ### Welcome Page:
@@ -56,3 +38,37 @@
 ![profile page](images/profile-page.png)
 ### Add a New Task:
 ![add new task](images/add-new-task.png)
+
+## Architecture Design
+![architecture](images/architecture.png)
+
+## ERD
+![ERD](images/erd.png)
+
+## Planned Routes
+### React Page Routes
+| Route              | Description
+| ---                | ---                      |
+| `/`                | Home page                |
+| `/register`        | Registration page        |
+| `/login`           | Log in page              |
+| `/profile/:userId` | User profile page        |
+| `/tasks`           | Tasks overview page      |
+| `/tasks/:labelId`  | Tasks by label pages     |
+| `/tasks/done`      | Completed tasks page     |
+| `/tasks/high`      | High priority tasks page |
+
+### Express API Endpoints
+| Route              | Method   | Description
+| ---                | ---      | ---                    |
+| `/users/:userId`   | `GET`    | Get user by id         |
+| `/users/:userId`   | `PUT`    | Update user info by id |
+| `/tasks<?>`        | `GET`    | Get all tasks          |
+| `/tasks`           | `POST`   | Create new task        |
+| `/tasks/:taskId`   | `GET`    | Get task by id         |
+| `/tasks/:taskId`   | `PUT`    | Update task info by id |
+| `/tasks/:taskId`   | `DELETE` | Delete task by id      |
+| `/profile/:userId` | `GET`    | User profile page      |
+
+
+
