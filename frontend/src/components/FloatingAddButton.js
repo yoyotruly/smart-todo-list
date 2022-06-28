@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
+import NewTaskCard from './NewTaskCard';
+
 const newTaskModalStyle = {
   position: 'absolute',
   top: '50%',
@@ -17,7 +19,7 @@ const newTaskModalStyle = {
   p: 4,
 };
 
-export default function FloatingActionButtons(theme) {
+export default function FloatingActionButtons() {
   const [open, setOpenModal] = React.useState(false);
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
@@ -42,12 +44,7 @@ export default function FloatingActionButtons(theme) {
         onClose={handleCloseModal}
       >
         <Box sx={newTaskModalStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <NewTaskCard />
         </Box>
       </Modal>
   </div>
