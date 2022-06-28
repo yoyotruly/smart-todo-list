@@ -1,4 +1,4 @@
-# Smart Todo List App Design Doc
+# The Sorting App - Smart Todo List Design Doc
 ## Table of Content
 - [User Stories & Acceptance Criteria](#user-stories--acceptance-criteria)
 - [Information Architecture](#information-architecture)
@@ -27,16 +27,16 @@
 
 ## Wireframes 
 ### Welcome Page:
-![welcome page](images/welcome-page.png)
+![Welcome Page](images/welcome-page.png)
 ### Login Page:
-![login page](images/login-page.png)
+![Login Page](images/login-page.png)
 ### Register Page:
-![register page](images/register-page.png)
-### Tasks Overview Page:
-![Tasks Overview Page](images/home-page.png)
+![Register Page](images/register-page.png)
+### Task Overview Page:
+![Task Overview Page](images/task-overview-page.png)
 ### Profile Page:
-![profile page](images/profile-page.png)
-### Add a New Task:
+![Profile Page](images/profile-page.png)
+### Add New Task Popup:
 ![add new task](images/add-new-task.png)
 
 ## Architecture
