@@ -59,16 +59,16 @@
 | `/tasks/high`      | High priority tasks page |
 
 ### Express API Endpoints
-| Route              | Method   | Description
-| ---                | ---      | ---                    |
-| `/users/:userId`   | `GET`    | Get user by id         |
-| `/users/:userId`   | `PUT`    | Update user info by id |
-| `/tasks<?>`        | `GET`    | Get all tasks          |
-| `/tasks`           | `POST`   | Create new task        |
-| `/tasks/:taskId`   | `GET`    | Get task by id         |
-| `/tasks/:taskId`   | `PUT`    | Update task info by id |
-| `/tasks/:taskId`   | `DELETE` | Delete task by id      |
-| `/profile/:userId` | `GET`    | User profile page      |
-
-
-
+| Route                         | Method   | Description               |
+| ---                           | ---      | ---                       |
+| `/api/users/:userId`          | `GET`    | Get user by id            |
+| `/api/users/:userId`          | `PUT`    | Update user info by id    |
+| `/api/tasks`                  | `GET`    | Get all tasks             |
+| `/api/tasks?label=<labelId>`  | `GET`    | Get all tasks by label id |
+| `/api/tasks?priority=<priorityId>`  | `GET`    | Get all tasks by priority id |
+| `/api/tasks?is_complete=<boolean>`  | `GET`    | Get all tasks by completion status |
+| `/api/tasks`                  | `POST`   | Create new task           |
+| `/api/tasks/:taskId`          | `GET`    | Get task by id            |
+| `/api/tasks/:taskId`          | `PUT`    | Update task info by id    |
+| `/api/tasks/:taskId`          | `DELETE` | Delete task by id         |
+| `/api/profile/:userId`        | `GET`    | User profile page         |
