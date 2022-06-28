@@ -10,6 +10,7 @@ import TaskDone from "./pages/tasks/TaskDone"
 import TaskHighPriority from "./pages/tasks/TaskHighPriority"
 import TaskLabel from "./pages/tasks/TaskLabel"
 
+import User from './components/User';
 
 function App() {
   return (
@@ -17,9 +18,7 @@ function App() {
       <CssBaseline />
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route path="/*" element={<User />} />
           <Route path="profile/:userId" element={<Profile />} />
           <Route path="tasks">
             <Route index element={<Tasks />} />
