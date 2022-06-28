@@ -5,7 +5,6 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Profile from "./pages/Profile"
 import Tasks from "./pages/tasks/Tasks"
-import TaskNew from "./pages/tasks/TaskNew"
 import TaskDone from "./pages/tasks/TaskDone"
 import TaskHighPriority from "./pages/tasks/TaskHighPriority"
 import TaskLabel from "./pages/tasks/TaskLabel"
@@ -23,7 +22,6 @@ function App() {
           <Route path="tasks">
             <Route index element={<Tasks />} />
             <Route path=":labelId" element={<TaskLabel />} />
-            <Route path="new" element={<TaskNew />} />
             <Route path="done" element={<TaskDone />} />
             <Route path="high" element={<TaskHighPriority />} />
           </Route>
