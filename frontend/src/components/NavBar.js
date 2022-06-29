@@ -21,8 +21,11 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
+          <Button color="inherit">Features</Button>
+          <Button color="inherit">Pricing</Button>
+          <Button color="inherit">Contact</Button>
+          <Button color="inherit">Help</Button>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            Features Pricing Contact Help
           </Typography>
           <Button color="inherit" href="/login">Login</Button>
           <Button color="inherit" href="/register">Register</Button>
