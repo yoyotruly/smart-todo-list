@@ -9,7 +9,7 @@ router
     const { userId } = req.params;
 
     userModel.getUserById(userId)
-      .then(user => res.send({ user }))
+      .then(user => res.json({ user }))
       .catch(err => {
         console.error(err);
         res.send(err)
