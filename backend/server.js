@@ -9,10 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 const usersRoutes = require("./routes/users");
 const tasksRoutes = require("./routes/tasks");
 const prioritiesRoutes = require("./routes/priorities");
+const labelsRoutes = require("./routes/labels");
 
 app.use("/api/users", usersRoutes);
 app.use("/api/tasks", tasksRoutes);
-app.use("/app/priorities", prioritiesRoutes);
+app.use("/api/priorities", prioritiesRoutes);
+app.use("/api/labels", labelsRoutes);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT} 😎`);
