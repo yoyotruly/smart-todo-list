@@ -51,7 +51,7 @@ export default function Register() {
               flexDirection: 'column',
               alignItems: 'center',
             }}>
-          <Typography component="h1" variant="h3">
+          <Typography component="h1" variant="h3" align="left">
             Stay Organized <br/>
             Stay Creative
           </Typography>
