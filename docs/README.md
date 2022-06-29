@@ -1,10 +1,13 @@
-# Smart Todo List App Design Doc
+# The Sorting App - Smart Todo List Design Doc
 ## Table of Content
 - [User Stories & Acceptance Criteria](#user-stories--acceptance-criteria)
 - [Information Architecture](#information-architecture)
 - [User Flow](#user-flow)
+- [Wireframes](#wireframes)
+- [Architecture](#architecture)
 - [ERD](#erd)
 - [Planned Routes](#planned-routes)
+
 ## User Stories & Acceptance Criteria
 | User Story | Acceptance Criteria |
 | --- | --- |
@@ -21,38 +24,50 @@
 ![ia](images/information-architecture.png)
 ## User Flow
 ![user flow](images/user-flow.png)
+
+## Wireframes 
+### Welcome Page:
+![Welcome Page](images/welcome-page.png)
+### Login Page:
+![Login Page](images/login-page.png)
+### Register Page:
+![Register Page](images/register-page.png)
+### Task Overview Page:
+![Task Overview Page](images/task-overview-page.png)
+### Profile Page:
+![Profile Page](images/profile-page.png)
+### Add New Task Popup:
+![add new task](images/add-new-task.png)
+
+## Architecture
+![architecture](images/architecture.png)
+
 ## ERD
 ![ERD](images/erd.png)
 
 ## Planned Routes
-| Method | Route | Description
-| ---       | ---              | ---                 |
-| `GET`     | `/`              | Get home page       |
-| `GET`     | `/register`      | Get sign up page    |
-| `POST`    | `/register`      | Register new user   |
-| `GET`     | `/login`         | Get login page      |
-| `POST`    | `/login`         | Log in user         |
-| `POST`    | `/logout`        | Log out user        |
-| `GET`     | `/users/:id`     | Get user by id      |
-| `PUT`     | `/users/:id`     | Edit user info      |
-| `DELETE`  | `/users/:id`     | Delete account      |
-| `GET`     | `/tasks`         | Get all tasks       |
-| `GET`     | `/tasks/:id`     | Get task by id      |
-| `POST`    | `/tasks`         | Create new task     |
-| `PUT`     | `/tasks/:id`     | Edit task info      |
-| `DELETE`  | `/tasks/:id`     | Delete task         |
+### React Page Routes
+| Route              | Description
+| ---                | ---                      |
+| `/`                | Home page                |
+| `/register`        | Registration page        |
+| `/login`           | Log in page              |
+| `/profile/:userId` | User profile page        |
+| `/tasks`           | Tasks overview page      |
+| `/tasks/:labelId`  | Tasks by label pages     |
+| `/tasks/done`      | Completed tasks page     |
+| `/tasks/high`      | High priority tasks page |
 
-
-## Wireframes 
-### Welcome Page:
-![welcome page](images/welcome-page.png)
-### Login Page:
-![login page](images/login-page.png)
-### Register Page:
-![register page](images/register-page.png)
-### Home Page:
-![home page](images/home-page.png)
-### Profile Page:
-![profile page](images/profile-page.png)
-### Add a New Task:
-![add new task](images/add-new-task.png)
+### Express API Endpoints
+| Route                              | Method   | Description                        |
+| ---                                | ---      | ---                                |
+| `/api/users/:userId`               | `GET`    | Get user by id                     |
+| `/api/users/:userId`               | `PUT`    | Update user info by id             |
+| `/api/tasks`                       | `GET`    | Get all tasks                      |
+| `/api/tasks?label=<labelId>`       | `GET`    | Get all tasks by label id          |
+| `/api/tasks?priority=<priorityId>` | `GET`    | Get all tasks by priority id       |
+| `/api/tasks?is_complete=<boolean>` | `GET`    | Get all tasks by completion status |
+| `/api/tasks`                       | `POST`   | Create new task                    |
+| `/api/tasks/:taskId`               | `GET`    | Get task by id                     |
+| `/api/tasks/:taskId`               | `PUT`    | Update task info by id             |
+| `/api/tasks/:taskId`               | `DELETE` | Delete task by id                  |
