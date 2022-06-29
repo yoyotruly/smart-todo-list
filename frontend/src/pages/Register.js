@@ -34,15 +34,26 @@ export default function Register() {
           xs={false}
           sm={4}
           md={7}
-          sx={{
-            backgroundImage: 'url(./app-slogan.png)',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
+          direction='column'
+          justifyContent='center'
+          alignItems='center'
+          minHeight='100vh'
+          textAlign='center'
+          square>
+            <Box
+            sx={{
+              my: 40,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}>
+          <Typography component="h1" variant="h3" align="left">
+            Start Getting Organized <br/>
+            For Free
+          </Typography>
+            </Box>
+        </Grid>
+
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
