@@ -1,11 +1,19 @@
-const express = require('express');
+const express = require("express");
 const router  = express.Router();
+
+const userModel = require("../models/model.user");
 
 router
   .route("/:userId")
   .get((req, res) => {
     const { userId } = req.params;
-    res.send(`Get user by id: ${userId}`);
+
+    userModel.getUserById(userId)
+      .then(user => res.send({ user }))
+      .catch(err => {
+        console.error(err);
+        res.send(err)
+      });
   })
   .put((req, res) => {
     const { userId } = req.params;
