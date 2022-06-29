@@ -1,10 +1,13 @@
-# Smart Todo List App Design Doc
+# The Sorting App - Smart Todo List Design Doc
 ## Table of Content
 - [User Stories & Acceptance Criteria](#user-stories--acceptance-criteria)
 - [Information Architecture](#information-architecture)
 - [User Flow](#user-flow)
+- [Wireframes](#wireframes)
+- [Architecture](#architecture)
 - [ERD](#erd)
 - [Planned Routes](#planned-routes)
+
 ## User Stories & Acceptance Criteria
 | User Story | Acceptance Criteria |
 | --- | --- |
@@ -16,47 +19,59 @@
 | **As a** logged-in user,<br>**I want to** mark a task as complete,<br>**So that** I can keep track of my to-dos. | **Given that** I have a to-do item,<br>**When** I click on the checkbox at the beginning of the task,<br>**Then** it should mark the task as complete with a line striked through the title and add the task to the `Done` page. |
 | **As a** logged-in user,<br>**I want to** view tasks per their category,<br>**So that** I can better organize them. | **Given that** I have added tasks labeled with the available categories,<br>**When** I click on category tab from the home page,<br>**Then** it should show me all the tasks with that label on the page. |
 
-
 ## Information Architecture
 ![ia](images/information-architecture.png)
+
 ## User Flow
 ![user flow](images/user-flow.png)
+
+## Wireframes 
+### Welcome Page:
+![Welcome Page](images/welcome-page.png)
+### Login Page:
+![Login Page](images/login-page.png)
+### Register Page:
+![Register Page](images/register-page.png)
+### Task Overview Page:
+![Task Overview Page](images/task-overview-page.png)
+### Profile Page:
+![Profile Page](images/profile-page.png)
+### Add New Task Popup:
+![add new task](images/add-new-task.png)
+
+## Architecture
+![architecture](images/architecture.png)
+
 ## ERD
 ![ERD](images/erd.png)
 
 ## Planned Routes
-| Method | Route | Description
-| ---       | ---              | ---                 |
-| `GET`     | `/`              | Get home page       |
-| `GET`     | `/register`      | Get sign up page    |
-| `POST`    | `/register`      | Register new user   |
-| `GET`     | `/login`         | Get login page      |
-| `POST`    | `/login`         | Log in user         |
-| `POST`    | `/logout`        | Log out user        |
-| `GET`     | `/users/:id`     | Get user by id      |
-| `PUT`     | `/users/:id`     | Edit user info      |
-| `DELETE`  | `/users/:id`     | Delete account      |
-| `GET`     | `/tasks`         | Get all tasks       |
-| `GET`     | `/tasks/:id`     | Get task by id      |
-| `POST`    | `/tasks`         | Create new task     |
-| `PUT`     | `/tasks/:id`     | Edit task info      |
-| `DELETE`  | `/tasks/:id`     | Delete task         |
-| `GET`     | `/priorities`         | Get all priorities       |
-| `GET`     | `/priorities/:id`     | Get priority by id      |
-| `GET`     | `/labels`         | Get all labels      |
-| `GET`     | `/labels/:id`     | Get label by id      |
+### React Page Routes
+| Route              | Description
+| ---                | ---                      |
+| `/`                | Home page                |
+| `/register`        | Registration page        |
+| `/login`           | Log in page              |
+| `/profile/:userId` | User profile page        |
+| `/tasks`           | Tasks overview page      |
+| `/tasks/:labelId`  | Tasks by label pages     |
+| `/tasks/done`      | Completed tasks page     |
+| `/tasks/high`      | High priority tasks page |
 
-
-## Wireframes 
-### Welcome Page:
-![welcome page](images/welcome-page.png)
-### Login Page:
-![login page](images/login-page.png)
-### Register Page:
-![register page](images/register-page.png)
-### Home Page:
-![home page](images/home-page.png)
-### Profile Page:
-![profile page](images/profile-page.png)
-### Add a New Task:
-![add new task](images/add-new-task.png)
+### Express API Endpoints
+| Route                              | Method   | Description                        |
+| ---                                | ---      | ---                                |
+| `/api/users/:userId`               | `GET`    | Get user by id                     |
+| `/api/users/:userId`               | `PUT`    | Update user info by id             |
+| `/api/tasks`                       | `GET`    | Get all tasks                      |
+| `/api/tasks?label=<labelId>`       | `GET`    | Get all tasks by label id          |
+| `/api/tasks?priority=<priorityId>` | `GET`    | Get all tasks by priority id       |
+| `/api/tasks?is_complete=<boolean>` | `GET`    | Get all tasks by completion status |
+| `/api/tasks`                       | `POST`   | Create new task                    |
+| `/api/tasks/:taskId`               | `GET`    | Get task by id                     |
+| `/api/tasks/:taskId`               | `PUT`    | Update task info by id             |
+| `/api/tasks/:taskId`               | `DELETE` | Delete task by id                  |
+| `/api/priorities`                  | `GET`    | Get all priorities                 |
+| `/api/priorities/:id`              | `GET`    | Get priority by id                 |
+| `/api/labels`                      | `GET`    | Get all labels                     |
+| `/api/labels/:id`                  | `GET`    | Get label by id                    |

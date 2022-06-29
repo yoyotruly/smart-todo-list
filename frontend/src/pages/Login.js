@@ -73,6 +73,8 @@ export default function Login() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              component="a"
+              href='/tasks'
             >
               Log In
             </Button>
