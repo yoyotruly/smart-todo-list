@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 const dbParams = require("../lib/db.js");
 
