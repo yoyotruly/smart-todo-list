@@ -41,6 +41,10 @@
 | `POST`    | `/tasks`         | Create new task     |
 | `PUT`     | `/tasks/:id`     | Edit task info      |
 | `DELETE`  | `/tasks/:id`     | Delete task         |
+| `GET`     | `/priorities`         | Get all priorities       |
+| `GET`     | `/priorities/:id`     | Get priority by id      |
+| `GET`     | `/labels`         | Get all labels      |
+| `GET`     | `/labels/:id`     | Get label by id      |
 
 
 ## Wireframes 
