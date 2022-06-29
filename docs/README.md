@@ -19,9 +19,9 @@
 | **As a** logged-in user,<br>**I want to** mark a task as complete,<br>**So that** I can keep track of my to-dos. | **Given that** I have a to-do item,<br>**When** I click on the checkbox at the beginning of the task,<br>**Then** it should mark the task as complete with a line striked through the title and add the task to the `Done` page. |
 | **As a** logged-in user,<br>**I want to** view tasks per their category,<br>**So that** I can better organize them. | **Given that** I have added tasks labeled with the available categories,<br>**When** I click on category tab from the home page,<br>**Then** it should show me all the tasks with that label on the page. |
 
-
 ## Information Architecture
 ![ia](images/information-architecture.png)
+
 ## User Flow
 ![user flow](images/user-flow.png)
 
@@ -71,3 +71,7 @@
 | `/api/tasks/:taskId`               | `GET`    | Get task by id                     |
 | `/api/tasks/:taskId`               | `PUT`    | Update task info by id             |
 | `/api/tasks/:taskId`               | `DELETE` | Delete task by id                  |
+| `/api/priorities`                  | `GET`    | Get all priorities                 |
+| `/api/priorities/:id`              | `GET`    | Get priority by id                 |
+| `/api/labels`                      | `GET`    | Get all labels                     |
+| `/api/labels/:id`                  | `GET`    | Get label by id                    |

@@ -1,5 +1,5 @@
-INSERT INTO users (name, email, passdword, profile_pic_url) VALUES ('Bob Belcher', 'bob@bobsburger.com', '123', 'https://static.wikia.nocookie.net/characterprofile/images/5/51/Bob_with_a_burger.png/revision/latest?cb=20200517031040');
-INSERT INTO users (name, email, passdword, profile_pic_url) VALUES ('Linda Belcher', 'linda@bobsburger.com', '123', 'https://pbs.twimg.com/profile_images/753428636435357696/7Qy0gnWs_400x400.jpg');
-INSERT INTO users (name, email, passdword, profile_pic_url) VALUES ('Tina Belcher', 'tina@bobsburger.com', '123', 'https://i.pinimg.com/originals/e7/15/c1/e715c1b1b0af5a41ff411c8334e03cb5.png');
-INSERT INTO users (name, email, passdword, profile_pic_url) VALUES ('Gene Belcher', 'gene@bobsburger.com', '123', 'https://static.wikia.nocookie.net/familyguyfanon/images/b/b7/Gene_Belcher.png/revision/latest?cb=20190219215133');
-INSERT INTO users (name, email, passdword, profile_pic_url) VALUES ('Louise Belcher', 'louise@bobsburger.com', '123', 'https://preview.redd.it/iymnt16a5as71.jpg?auto=webp&s=1351489fd7102c3cf684dcddad6546e94dfff71c');
+INSERT INTO users (name, email, password, profile_pic_url) VALUES ('Bob Belcher', 'bob@bobsburger.com', '123', 'https://static.wikia.nocookie.net/characterprofile/images/5/51/Bob_with_a_burger.png/revision/latest?cb=20200517031040');
+INSERT INTO users (name, email, password, profile_pic_url) VALUES ('Linda Belcher', 'linda@bobsburger.com', '123', 'https://pbs.twimg.com/profile_images/753428636435357696/7Qy0gnWs_400x400.jpg');
+INSERT INTO users (name, email, password, profile_pic_url) VALUES ('Tina Belcher', 'tina@bobsburger.com', '123', 'https://i.pinimg.com/originals/e7/15/c1/e715c1b1b0af5a41ff411c8334e03cb5.png');
+INSERT INTO users (name, email, password, profile_pic_url) VALUES ('Gene Belcher', 'gene@bobsburger.com', '123', 'https://static.wikia.nocookie.net/familyguyfanon/images/b/b7/Gene_Belcher.png/revision/latest?cb=20190219215133');
+INSERT INTO users (name, email, password, profile_pic_url) VALUES ('Louise Belcher', 'louise@bobsburger.com', '123', 'https://preview.redd.it/iymnt16a5as71.jpg?auto=webp&s=1351489fd7102c3cf684dcddad6546e94dfff71c');
