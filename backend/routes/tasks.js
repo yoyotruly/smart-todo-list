@@ -19,6 +19,16 @@ router
   })
 
 router
+  .put("/delete/:id", async(req, res) => {
+    try {
+      await taskModel.deleteTaskById(req.params.id);
+      res.sendStatus(200);
+    } catch (error) {
+      console.error(error);
+    }
+  })
+
+router
   .put("/:id", async(req, res) => {
     const result = await taskModel.updateTaskById(req.params.id, {...req.body});
     console.log(result);
