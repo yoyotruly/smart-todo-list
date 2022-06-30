@@ -19,24 +19,31 @@ router
   })
 
 router
-  .route("/:taskId")
-  .get((req, res) => {
-    const { taskId } = req.params;
+  .put("/:id", async(req, res) => {
+    const result = await taskModel.updateTaskById(req.params.id, {...req.body});
+    console.log(result);
+    res.send(result);
+  })
 
-    taskModel.getTaskById(taskId)
-      .then(task => res.json({ task }))
-      .catch(err => {
-        console.error(err);
-        res.send(err)
-      });
-  })
-  .put((req, res) => {
-    const { taskId } = req.params;
-    res.send(`Update task by id ${taskId}`);
-  })
-  .delete((req, res) => {
-    const { taskId } = req.params;
-    res.send(`Delete task by id ${taskId}`);
-  })
+// router
+//   .route("/:taskId")
+//   .get((req, res) => {
+//     const { taskId } = req.params;
+
+//     taskModel.getTaskById(taskId)
+//       .then(task => res.json({ task }))
+//       .catch(err => {
+//         console.error(err);
+//         res.send(err)
+//       });
+//   })
+//   .put((req, res) => {
+//     const { taskId } = req.params;
+//     res.send(`Update task by id ${taskId}`);
+//   })
+//   .delete((req, res) => {
+//     const { taskId } = req.params;
+//     res.send(`Delete task by id ${taskId}`);
+//   })
 
 module.exports = router;
