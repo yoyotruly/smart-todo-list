@@ -18,7 +18,7 @@ router
     res.send("Create new task");
   })
 
-router
+  router
   .put("/delete/:id", async(req, res) => {
     try {
       const result = await taskModel.deleteTaskById(req.params.id);
@@ -37,26 +37,5 @@ router
       console.error(error);
     }
   })
-
-// router
-//   .route("/:taskId")
-//   .get((req, res) => {
-//     const { taskId } = req.params;
-
-//     taskModel.getTaskById(taskId)
-//       .then(task => res.json({ task }))
-//       .catch(err => {
-//         console.error(err);
-//         res.send(err)
-//       });
-//   })
-//   .put((req, res) => {
-//     const { taskId } = req.params;
-//     res.send(`Update task by id ${taskId}`);
-//   })
-//   .delete((req, res) => {
-//     const { taskId } = req.params;
-//     res.send(`Delete task by id ${taskId}`);
-//   })
 
 module.exports = router;
