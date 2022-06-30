@@ -60,46 +60,14 @@ const updateTaskById = (id, taskData) => {
     UPDATE tasks
     SET `;
   const param = [];
-  if(taskData.priority_id) {
-    param.push(taskData.priority_id)
-    query += `priority_id = $${param.length}`
-  }
-  if(taskData.label_id) {
-    param.push(taskData.label_id)
-    param.length < 1 ?
-    query += `label_id = $${param.length}` :
-    query += `, label_id = $${param.length}`
-  }
-  if(taskData.title) {
-    param.push(taskData.title)
-    param.length < 1 ?
-    query += `title = $${param.length}` :
-    query += `, title = $${param.length}`
-  }
-  if(taskData.description) {
-    param.push(taskData.description)
-    param.length < 1 ?
-    query += `description = $${param.length}` :
-    query += `, description = $${param.length}`
-  }
-  if(taskData.due_date) {
-    param.push(taskData.due_date)
-    param.length < 1 ?
-    query += `due_date = $${param.length}` :
-    query += `, due_date = $${param.length}`
-  }
-  if(taskData.is_complete) {
-    param.push(taskData.is_complete)
-    param.length < 1 ?
-    query += `is_complete = $${param.length}` :
-    query += `, is_complete = $${param.length}`
-  }
-  if(taskData.is_active) {
-    param.push(taskData.is_active)
-    param.length < 1 ?
-    query += `is_active = $${param.length}` :
-    query += `, is_active = $${param.length}`
-  }
+  Object.keys(taskData).forEach((key) => {
+    if(taskData[key]){
+      param.push(taskData[key]);
+      param.length < 2 ?
+      query += `${key} = $${param.length}` :
+      query += `, ${key} = $${param.length}`
+    }
+  })
   param.push(id);
   query += ` WHERE id = $${param.length}
     RETURNING *;`;
