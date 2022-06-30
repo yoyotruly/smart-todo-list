@@ -7,7 +7,9 @@ router
   .route("/")
   .get((req, res) => {
     labelModel.getAllLabels()
-      .then(labels => res.json({ labels }))
+      .then(labels => {
+        res.json({ labels })
+      })
       .catch(err => {
         console.error(err);
         res.send(err)

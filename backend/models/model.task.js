@@ -55,19 +55,28 @@ const getTaskById = (id) => {
     .catch(err => console.log(err.stack));
 };
 
-const updateTaskById = (id) => {
-  const query = `
+const updateTaskById = (id, taskData) => {
+  let query = `
     UPDATE tasks
-       SET -- insert fields
-     WHERE id = $1
-    RETURNING *;
-  `;
-  const param = [id];
+    SET `;
+  const param = [];
+  Object.keys(taskData).forEach((key) => {
+    if(taskData[key]){
+      param.push(taskData[key]);
+      param.length < 2 ?
+      query += `${key} = $${param.length}` :
+      query += `, ${key} = $${param.length}`
+    }
+  })
+  param.push(id);
+  query += ` WHERE id = $${param.length}
+    RETURNING *;`;
+  console.log(query);
 
   return db
     .query(query, param)
     .then(res => {
-      const task = task.rows[0];
+      const task = res.rows[0];
       if (!task) return null;
       return task;
     })
