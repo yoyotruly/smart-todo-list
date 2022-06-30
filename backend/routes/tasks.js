@@ -21,8 +21,8 @@ router
 router
   .put("/delete/:id", async(req, res) => {
     try {
-      await taskModel.deleteTaskById(req.params.id);
-      res.sendStatus(200);
+      const result = await taskModel.deleteTaskById(req.params.id);
+      res.send(result);
     } catch (error) {
       console.error(error);
     }
