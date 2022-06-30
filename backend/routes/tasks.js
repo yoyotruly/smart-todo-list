@@ -30,9 +30,12 @@ router
 
 router
   .put("/:id", async(req, res) => {
-    const result = await taskModel.updateTaskById(req.params.id, {...req.body});
-    console.log(result);
-    res.send(result);
+    try {
+      const result = await taskModel.updateTaskById(req.params.id, {...req.body});
+      res.send(result);
+    } catch (error) {
+      console.error(error);
+    }
   })
 
 // router
