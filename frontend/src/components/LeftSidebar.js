@@ -37,30 +37,41 @@ export default function LeftSidebar() {
             key={"Overview"}
             component="a"
             href="/tasks"
+            sx={{color: "text.primary"}}
           >
             <ListItemButton>
               <ListItemIcon>
                 <SummarizeOutlinedIcon />
               </ListItemIcon>
-              <ListItemText primary={"Overview"} />
+              <ListItemText primary="Today" />
             </ListItemButton>
           </ListItem>
 
-          <ListItem key={"Today"}>
+          <ListItem
+            key={"Today"}
+            component="a"
+            href="/tasks/today"
+            sx={{color: "text.primary"}}
+          >
             <ListItemButton>
               <ListItemIcon>
                 <TodayOutlinedIcon />
               </ListItemIcon>
-              <ListItemText primary={"Today"} />
+              <ListItemText primary="Today" />
             </ListItemButton>
           </ListItem>
 
-          <ListItem key={"Scheduled"}>
+          <ListItem
+            key={"Scheduled"}
+            component="a"
+            href="/tasks/scheduled"
+            sx={{color: "text.primary"}}
+          >
             <ListItemButton>
               <ListItemIcon>
                 <AccessAlarmOutlinedIcon />
               </ListItemIcon>
-              <ListItemText primary={"Scheduled"} />
+              <ListItemText primary="Scheduled" />
             </ListItemButton>
           </ListItem>
 
@@ -68,12 +79,13 @@ export default function LeftSidebar() {
             key={"Important"}
             component="a"
             href="/tasks/high"
+            sx={{color: "text.primary"}}
           >
             <ListItemButton>
               <ListItemIcon>
                 <StarBorderOutlinedIcon />
               </ListItemIcon>
-              <ListItemText primary={"Important"} />
+              <ListItemText primary="Important" />
             </ListItemButton>
           </ListItem>
 
@@ -81,12 +93,13 @@ export default function LeftSidebar() {
             key={"Done"}
             component="a"
             href="/tasks/done"
+            sx={{color: "text.primary"}}
           >
             <ListItemButton>
               <ListItemIcon>
                 <EventAvailableOutlinedIcon />
               </ListItemIcon>
-              <ListItemText primary={"Done"} />
+              <ListItemText primary="Done" />
             </ListItemButton>
           </ListItem>
 
@@ -100,12 +113,13 @@ export default function LeftSidebar() {
             key={"To Eat"}
             component="a"
             href="/tasks/1"
+            sx={{color: "text.primary"}}
           >
             <ListItemButton>
               <ListItemIcon>
                 <SquareRoundedIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary={"To Eat"} />
+              <ListItemText primary="To Eat" />
             </ListItemButton>
           </ListItem>
 
@@ -113,12 +127,13 @@ export default function LeftSidebar() {
             key={"To Buy"}
             component="a"
             href="/tasks/2"
+            sx={{color: "text.primary"}}
           >
             <ListItemButton>
               <ListItemIcon>
                 <SquareRoundedIcon color="warning"/>
               </ListItemIcon>
-              <ListItemText primary={"To Buy"} />
+              <ListItemText primary="To Buy" />
             </ListItemButton>
           </ListItem>
 
@@ -126,12 +141,13 @@ export default function LeftSidebar() {
             key={"To Read"}
             component="a"
             href="/tasks/3"
+            sx={{color: "text.primary"}}
           >
             <ListItemButton>
               <ListItemIcon>
                 <SquareRoundedIcon color="secondary"/>
               </ListItemIcon>
-              <ListItemText primary={"To Read"} />
+              <ListItemText primary="To Read" />
             </ListItemButton>
           </ListItem>
 
@@ -139,12 +155,13 @@ export default function LeftSidebar() {
             key={"To Watch"}
             component="a"
             href="/tasks/4"
+            sx={{color: "text.primary"}}
           >
             <ListItemButton>
               <ListItemIcon>
                 <SquareRoundedIcon color="success"/>
               </ListItemIcon>
-              <ListItemText primary={"To Watch"} />
+              <ListItemText primary="To Watch" />
             </ListItemButton>
           </ListItem>
 
