@@ -7,8 +7,10 @@ import Typography from '@mui/material/Typography';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import CircleCheckbox from './CircleCheckbox';
-import AddIcon from '@mui/icons-material/Add';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import LoopIcon from '@mui/icons-material/Loop';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
@@ -47,16 +49,21 @@ export default function RecipeReviewCard(props) {
 
         <List dense>
 
-          <ListItem>
+          <ListItem sx={{marginTop: "25px"}}>
             <ListItemButton>
               <ListItemIcon>
-                <AddIcon color="primary" />
+                < AddCircleOutlineIcon fontSize="medium" color="primary" />
               </ListItemIcon>
-              <ListItemText primary="Add step" />
+              <ListItemText
+                disableTypography
+                primary={
+                  <Typography variant="body1" style={{ color: "steelblue" }}>Step one</Typography>
+                }
+              />
             </ListItemButton>
           </ListItem>
 
-          <ListItem>
+          <ListItem sx={{ml: "3px"}}>
             <ListItemButton>
               <ListItemIcon>
                 <RadioButtonUncheckedIcon fontSize="small" color="disabled" />
@@ -65,12 +72,40 @@ export default function RecipeReviewCard(props) {
             </ListItemButton>
           </ListItem>
 
-          <ListItem>
+          <ListItem sx={{ml: "3px"}}>
             <ListItemButton>
               <ListItemIcon>
                 <RadioButtonUncheckedIcon fontSize="small" color="disabled" />
               </ListItemIcon>
               <ListItemText primary="Second step" />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem sx={{marginTop: "25px"}}>
+            <ListItemButton>
+              <ListItemIcon>
+                <LoopIcon fontSize="medium" color="primary" />
+              </ListItemIcon>
+              <ListItemText
+                disableTypography
+                primary={
+                  <Typography variant="body1" style={{ color: "steelblue" }}>Repeat</Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem sx={{marginTop: "25px"}}>
+            <ListItemButton>
+              <ListItemIcon>
+                <AttachFileIcon fontSize="medium" color="primary" />
+              </ListItemIcon>
+              <ListItemText
+                disableTypography
+                primary={
+                  <Typography variant="body1" style={{ color: "steelblue" }}>Add file</Typography>
+                }
+              />
             </ListItemButton>
           </ListItem>
 
