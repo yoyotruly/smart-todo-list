@@ -36,7 +36,11 @@ export default function NewTaskModal(props) {
           <CardHeader title={"Add New Task"} />
 
           <CardContent
-            sx={{display: "flex", flexDirection: "column", gap: "20px"}}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px"
+            }}
           >
 
             <TextField
