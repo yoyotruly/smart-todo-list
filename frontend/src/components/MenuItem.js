@@ -3,7 +3,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-export default function MenuListItem(props) {
+export default function MenuItem(props) {
   return (
     <ListItem
       component="a"
