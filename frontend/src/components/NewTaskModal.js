@@ -13,8 +13,9 @@ import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
 import Typography from '@mui/material/Typography';
-
 import ClickMenu from './ClickMenu';
+import { labels } from "../data/labels";
+import { priorities } from "../data/priorities";
 
 const newTaskModalStyle = {
   position: 'absolute',
@@ -44,6 +45,23 @@ export default function NewTaskModal(props) {
     labelColor = "success";
   };
 
+  const [priority, setPriority] = React.useState("");
+  const selectPriority = (priority) => setPriority(priority);
+  const deletePriority = () => setPriority();
+
+  const [formData, setFormData] = React.useState(
+    {title: "", description: ""}
+  );
+
+  const handleChange = (event) => {
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [event.target.name]: event.target.value
+      }
+    })
+  }
+
   return (
     <Modal
       open={props.isOpen}
@@ -71,18 +89,20 @@ export default function NewTaskModal(props) {
 
             <TextField
               fullWidth
-              id="task-name"
+              name="title"
               label="Task Name"
               variant="filled"
+              onChange={handleChange}
             />
 
             <TextField
               fullWidth
-              id="description"
+              name="description"
               label="Description"
               multiline
               rows={4}
               variant="filled"
+              onChange={handleChange}
             />
           </CardContent>
 
@@ -91,13 +111,9 @@ export default function NewTaskModal(props) {
           >
             <Box sx={{display: "flex", alignItems: "center"}}>
               <ClickMenu
+                id="label"
                 icon={<TagRoundedIcon sx={{ fontSize: "20px" }} />}
-                menuItems={[
-                  {id: 1, name: "To Eat"},
-                  {id: 2, name: "To Buy"},
-                  {id: 3, name: "To Read"},
-                  {id: 4, name: "To Watch"}
-                ]}
+                menuItems={labels}
                 selectMenuItem={selectLabel}
               />
                 {label &&
@@ -111,19 +127,28 @@ export default function NewTaskModal(props) {
                   />
                 }
             </Box>
-            {/* <Box sx={{display: "flex"}}>
+            <Box sx={{display: "flex", alignItems: "center"}}>
               <ClickMenu
                 icon={<FlagOutlinedIcon sx={{ fontSize: "20px" }} />}
-                menuItems={["High", "Medium", "Low"]}
+                menuItems={priorities}
+                selectMenuItem={selectPriority}
               />
+              {priority &&
+                <Chip
+                  label={priority}
+                  // onClick={handleClick}
+                  onDelete={deletePriority}
+                  // variant="outlined"
+                  size="small"
+                />
+              }
               <ClickMenu
                 icon={<EventOutlinedIcon sx={{ fontSize: "20px" }} />}
-                menuItems={["Today", "Tomorrow"]}
               />
               <ClickMenu
                 icon={<AccessAlarmOutlinedIcon sx={{ fontSize: "20px" }} />}
               />
-            </Box> */}
+            </Box>
 
           </CardActions>
 
