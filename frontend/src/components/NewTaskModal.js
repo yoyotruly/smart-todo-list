@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
@@ -7,12 +8,13 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
 import TagRoundedIcon from '@mui/icons-material/TagRounded';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
-import { Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
+
+import ClickMenu from './ClickMenu';
 
 const newTaskModalStyle = {
   position: 'absolute',
@@ -27,9 +29,9 @@ const newTaskModalStyle = {
 };
 
 export default function NewTaskModal(props) {
-  const deleteLabel = () => {
-    console.info('You clicked the delete icon.');
-  };
+  const [label, setLabel] = React.useState("To Eat");
+
+  const deleteLabel = () => setLabel("");
 
   return (
     <Modal
@@ -76,29 +78,34 @@ export default function NewTaskModal(props) {
           <CardActions
             sx={{display: "flex", justifyContent: "space-between"}}
           >
-            <Box>
-              <IconButton aria-label="priority">
-                <TagRoundedIcon sx={{ fontSize: "20px" }}/>
-              </IconButton>
-                <Chip
-                  label="To Eat"
-                  // onClick={handleClick}
-                  onDelete={deleteLabel}
-                  variant="outlined"
-                  color="success"
-                  size="small"
-                />
+            <Box sx={{display: "flex", alignItems: "center"}}>
+              <ClickMenu
+                icon={<TagRoundedIcon sx={{ fontSize: "20px" }} />}
+                menuItems={["To Eat", "To Buy", "To Read", "To Watch"]}
+              />
+                {label &&
+                  <Chip
+                    label={label}
+                    // onClick={handleClick}
+                    onDelete={deleteLabel}
+                    variant="outlined"
+                    color="success"
+                    size="small"
+                  />
+                }
             </Box>
-            <Box>
-              <IconButton aria-label="priority">
-                <FlagOutlinedIcon sx={{ fontSize: "20px" }} />
-              </IconButton>
-              <IconButton aria-label="schedule">
-                <EventOutlinedIcon sx={{ fontSize: "20px" }} />
-              </IconButton>
-              <IconButton aria-label="reminder">
-                <AccessAlarmOutlinedIcon sx={{ fontSize: "20px" }} />
-              </IconButton>
+            <Box sx={{display: "flex"}}>
+              <ClickMenu
+                icon={<FlagOutlinedIcon sx={{ fontSize: "20px" }} />}
+                menuItems={["High", "Medium", "Low"]}
+              />
+              <ClickMenu
+                icon={<EventOutlinedIcon sx={{ fontSize: "20px" }} />}
+                menuItems={["Today", "Tomorrow"]}
+              />
+              <ClickMenu
+                icon={<AccessAlarmOutlinedIcon sx={{ fontSize: "20px" }} />}
+              />
             </Box>
 
           </CardActions>
