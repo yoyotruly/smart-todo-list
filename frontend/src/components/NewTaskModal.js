@@ -85,7 +85,6 @@ export default function NewTaskModal(props) {
               </Button>
           </CardActions>
 
-
         </Card>
       </Box>
 
