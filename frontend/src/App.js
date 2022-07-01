@@ -14,7 +14,8 @@ function App() {
         <Routes>
           <Route path="/*" element={<User />} />
           <Route path="tasks">
-            <Route index element={<Tasks />} />
+            <Route index />
+            <Route path="overview" element={<Tasks />} />
             <Route path=":labelId" element={<TaskLabel />} />
             <Route path="done" element={<TaskDone />} />
             <Route path="important" element={<TaskHighPriority />} />
