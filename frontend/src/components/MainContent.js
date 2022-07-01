@@ -73,9 +73,6 @@ export default function RightSidebar() {
 
         <Toolbar />
         <TaskDetail task={task}/>
-        <Button variant="text" onClick={handleClose}>
-          Close
-        </Button>
 
       </Drawer>
     </Box>
