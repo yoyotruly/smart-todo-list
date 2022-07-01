@@ -31,7 +31,7 @@ const newTaskModalStyle = {
 export default function NewTaskModal(props) {
   const [label, setLabel] = React.useState("");
   const selectLabel = (label) => setLabel(label);
-  const deleteLabel = () => setLabel("");
+  const deleteLabel = () => setLabel();
 
   let labelColor;
   if (label === "To Eat") {
@@ -105,7 +105,7 @@ export default function NewTaskModal(props) {
                     label={label}
                     // onClick={handleClick}
                     onDelete={deleteLabel}
-                    variant="outlined"
+                    // variant="outlined"
                     color={labelColor}
                     size="small"
                   />
