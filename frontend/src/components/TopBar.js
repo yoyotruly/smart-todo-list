@@ -74,7 +74,10 @@ export default function TopBar() {
         width: `calc(100% - ${drawerWidth}px)`,
         ml: `${drawerWidth}px`,
         zIndex: (theme) => theme.zIndex.drawer + 1,
-        backgroundColor: grey[100]
+        backgroundColor: grey[100],
+        borderColor: grey[300],
+        borderBottomWidth: "1px",
+        borderBottomStyle: "solid"
       }}
     >
 
