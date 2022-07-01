@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,6 +8,7 @@ import TaskDetail from "./TaskDetail";
 
 const leftSidebarWidth = 240;
 const rightSidebarWidth = 700;
+const topBarHeight = 64;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -25,12 +26,26 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
       }),
       marginRight: 0,
     }),
+    backgroundColor: alpha(theme.palette.grey[700], 0.02),
+    height: "100vh"
   }),
 );
 
 const taskListStyles = {
   maxWidth: `calc(100% - ${leftSidebarWidth}px)`,
-  ml: `${leftSidebarWidth}px`
+  ml: `${leftSidebarWidth}px`,
+  mt: `${topBarHeight + 40}px`
+}
+
+const appbarStyles = {
+  maxWidth: `calc(100% - ${leftSidebarWidth}px)`,
+  ml: `${leftSidebarWidth}px`,
+  mt: `${topBarHeight}px`,
+  backgroundColor: "common.white",
+  color: "inherit",
+  borderBottomWidth: "5px",
+  borderBottomStyle: "solid",
+  borderColor: "primary.main",
 }
 
 const task = {
@@ -49,9 +64,9 @@ export default function RightSidebar() {
   return (
     <Box sx={{ display: 'flex' }}>
       <Main open={isOpen}>
-        <Toolbar />
         <TaskList
-          style={taskListStyles}
+          listStyle={taskListStyles}
+          appbarStyle={appbarStyles}
           toggle={toggle}
         />
       </Main>
