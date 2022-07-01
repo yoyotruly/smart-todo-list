@@ -12,6 +12,7 @@ import TagRoundedIcon from '@mui/icons-material/TagRounded';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
+import { Typography } from '@mui/material';
 
 const newTaskModalStyle = {
   position: 'absolute',
@@ -22,7 +23,7 @@ const newTaskModalStyle = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p: 6
+  p: 2
 };
 
 export default function NewTaskModal(props) {
@@ -38,7 +39,14 @@ export default function NewTaskModal(props) {
       <Box sx={newTaskModalStyle}>
         <Card elevation={0}>
 
-          <CardHeader title={"Add New Task"} />
+          <CardHeader
+            title={
+              <Typography variant="h6" color="text.primary">
+                Add a new task
+              </Typography>
+            }
+            sx={{pb: "2px", pl: "20px"}}
+          />
 
           <CardContent
             sx={{
@@ -70,7 +78,7 @@ export default function NewTaskModal(props) {
           >
             <Box>
               <IconButton aria-label="priority">
-                <TagRoundedIcon />
+                <TagRoundedIcon sx={{ fontSize: "20px" }}/>
               </IconButton>
                 <Chip
                   label="To Eat"
@@ -83,19 +91,25 @@ export default function NewTaskModal(props) {
             </Box>
             <Box>
               <IconButton aria-label="priority">
-                <FlagOutlinedIcon />
+                <FlagOutlinedIcon sx={{ fontSize: "20px" }} />
               </IconButton>
               <IconButton aria-label="schedule">
-                <EventOutlinedIcon />
+                <EventOutlinedIcon sx={{ fontSize: "20px" }} />
               </IconButton>
               <IconButton aria-label="reminder">
-                <AccessAlarmOutlinedIcon />
+                <AccessAlarmOutlinedIcon sx={{ fontSize: "20px" }} />
               </IconButton>
             </Box>
 
           </CardActions>
 
-          <CardActions sx={{display: "flex", justifyContent: "flex-end"}}>
+          <CardActions
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              pr: "16px"
+            }}
+          >
               <Button variant="outlined" onClick={props.handleClose}>
                 Cancel
               </Button>
