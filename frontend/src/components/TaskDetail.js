@@ -11,8 +11,11 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import LoopIcon from '@mui/icons-material/Loop';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
-
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 
 export default function RecipeReviewCard(props) {
   return (
@@ -57,7 +60,7 @@ export default function RecipeReviewCard(props) {
               <ListItemText
                 disableTypography
                 primary={
-                  <Typography variant="body1" style={{ color: "steelblue" }}>Step one</Typography>
+                  <Typography variant="body1" style={{ color: "steelblue" }}>Add step</Typography>
                 }
               />
             </ListItemButton>
