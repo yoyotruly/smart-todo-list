@@ -8,7 +8,7 @@ import TaskList from "./TaskList";
 import TaskDetail from "./TaskDetail";
 
 const leftSidebarWidth = 240;
-const rightSidebarWidth = 650;
+const rightSidebarWidth = 700;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
