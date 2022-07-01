@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 
-export default function DialogSelect(props) {
+export default function ClickMenu(props) {
 
   const [anchorEl, setAnchorElUserMenu] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -50,13 +50,15 @@ export default function DialogSelect(props) {
 
           {props.menuItems.map(item => {
             return (
-              <MenuItem onClick={() => props.selectMenuItem(item.name)}>
+              <MenuItem
+                key={item.id}
+                onClick={() => props.selectMenuItem(item.name)}>
                 <Typography variant="body2">
                   {item.name}
                 </Typography>
               </MenuItem>
-              )
-            })}
+            )
+          })}
 
         </Menu>
       }
