@@ -4,11 +4,11 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
-
 import TaskList from "./TaskList";
 import TaskDetail from "./TaskDetail";
 
-const rightSidebarWidth = 700;
+const leftSidebarWidth = 240;
+const rightSidebarWidth = 600;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -29,18 +29,24 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   }),
 );
 
+const taskListStyles = {
+  maxWidth: `calc(100% - ${leftSidebarWidth}px)`,
+  ml: `calc(0.5% + ${leftSidebarWidth}px)`,
+}
+
 export default function RightSidebar() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [isOpen, setOpen] = React.useState(false);
+  const toggle = () => setOpen(prevIsOpen => !prevIsOpen);
   const handleClose = () => setOpen(false);
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <Main open={open}>
+      <Main open={isOpen}>
         <Toolbar />
-        <Button variant="text" onClick={handleOpen}>Show Details</Button>
-        <TaskList />
-
+        <TaskList
+          style={taskListStyles}
+          toggle={toggle}
+        />
       </Main>
 
       <Drawer
@@ -53,7 +59,7 @@ export default function RightSidebar() {
         }}
         variant="persistent"
         anchor="right"
-        open={open}
+        open={isOpen}
       >
 
         <Toolbar />
