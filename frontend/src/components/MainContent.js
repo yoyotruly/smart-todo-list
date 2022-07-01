@@ -8,7 +8,7 @@ import TaskList from "./TaskList";
 import TaskDetail from "./TaskDetail";
 
 const leftSidebarWidth = 240;
-const rightSidebarWidth = 600;
+const rightSidebarWidth = 650;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -32,6 +32,15 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 const taskListStyles = {
   maxWidth: `calc(100% - ${leftSidebarWidth}px)`,
   ml: `${leftSidebarWidth}px`
+}
+
+const task = {
+  id: 1,
+  title: "Buy ugly vegetables from the Farmer's Market this weekend",
+  description: `People get so judgmental about how food looks. I mean, ugly, soft, discolored food is food, too. I need to save them. (Wow, I'm such a hero)`,
+  due_date: "July 2, 2022",
+  priority: "High",
+  label: "To Buy"
 }
 
 export default function RightSidebar() {
@@ -63,7 +72,7 @@ export default function RightSidebar() {
       >
 
         <Toolbar />
-        <TaskDetail />
+        <TaskDetail task={task}/>
         <Button variant="text" onClick={handleClose}>
           Close
         </Button>
