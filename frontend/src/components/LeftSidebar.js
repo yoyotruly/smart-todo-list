@@ -1,4 +1,3 @@
-import List from '@mui/material/List';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import MenuListPages from './MenuListPages';
