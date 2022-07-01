@@ -23,7 +23,15 @@ export default function LeftSidebar() {
       anchor="left"
     >
 
-      <Toolbar />
+      <Toolbar>
+        <img
+          src={`${process.env.PUBLIC_URL}/logo-light.png`}
+          alt="logo"
+          height="50px"
+        />
+
+      </Toolbar>
+
       <List dense>
         <MenuListPages />
       </List>
