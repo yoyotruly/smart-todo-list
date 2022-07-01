@@ -1,6 +1,10 @@
 import * as React from 'react';
 import List from '@mui/material/List';
 import TaskListItem from './TaskListItem';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 const tasks = [
   {
@@ -44,8 +48,21 @@ export default function TaskList(props) {
   const taskElements = createTaskElements(tasks, props)
 
   return (
-    <List sx={props.style}>
-      {taskElements}
-    </List>
+    <>
+      <AppBar
+        elevation={0}
+        sx={props.appbarStyle}
+      >
+        <Toolbar>
+          <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+            Overview
+          </Typography>
+        </Toolbar>
+      </AppBar>
+
+      <List sx={props.listStyle}>
+        {taskElements}
+      </List>
+    </>
   );
 }
