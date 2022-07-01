@@ -13,7 +13,7 @@ const addButtonStyles = {
 };
 
 
-function Tasks() {
+function Overview() {
   const [isOpen, setOpenModal] = React.useState(false);
   const openModal = () => setOpenModal(true);
   const closeModal = () => setOpenModal(false);
@@ -36,4 +36,4 @@ function Tasks() {
   )
 }
 
-export default Tasks;
+export default Overview;

@@ -4,7 +4,7 @@ import LeftSidebar from "../../components/LeftSidebar";
 import MainContent from '../../components/MainContent';
 import AddButton from '../../components/AddButton';
 
-function TaskLabel() {
+function Label() {
   return (
     <Box sx={{ display: 'flex' }}>
 
@@ -17,4 +17,4 @@ function TaskLabel() {
   )
 }
 
-export default TaskLabel;
+export default Label;

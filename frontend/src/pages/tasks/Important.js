@@ -5,8 +5,8 @@ import LeftSidebar from "../../components/LeftSidebar";
 import MainContent from '../../components/MainContent';
 import AddButton from '../../components/AddButton';
 
-function TaskDone() {
 
+function Important() {
   return (
     <Box sx={{ display: 'flex' }}>
 
@@ -19,4 +19,4 @@ function TaskDone() {
   )
 }
 
-export default TaskDone;
+export default Important;

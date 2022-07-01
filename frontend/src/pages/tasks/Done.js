@@ -5,8 +5,8 @@ import LeftSidebar from "../../components/LeftSidebar";
 import MainContent from '../../components/MainContent';
 import AddButton from '../../components/AddButton';
 
+function Done() {
 
-function TaskHighPriority() {
   return (
     <Box sx={{ display: 'flex' }}>
 
@@ -19,4 +19,4 @@ function TaskHighPriority() {
   )
 }
 
-export default TaskHighPriority;
+export default Done;
