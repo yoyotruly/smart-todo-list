@@ -7,7 +7,7 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
 import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
 import SquareRoundedIcon from '@mui/icons-material/SquareRounded';
-import MenuItem from './MenuItem';
+import MenuListItem from './MenuListItem';
 
 const leftSidebarWidth = 240;
 
@@ -30,35 +30,35 @@ export default function LeftSidebar() {
 
       <List dense>
 
-        <MenuItem
+        <MenuListItem
           key={"Overview"}
           href="/tasks"
           text="Overview"
           icon={<SummarizeOutlinedIcon />}
         />
 
-        <MenuItem
+        <MenuListItem
           key={"Today"}
           href="/tasks/today"
           text="Today"
           icon={<TodayOutlinedIcon />}
         />
 
-        <MenuItem
+        <MenuListItem
           key={"Scheduled"}
           href="/tasks/scheduled"
           text="Scheduled"
           icon={<AccessAlarmOutlinedIcon />}
         />
 
-        <MenuItem
+        <MenuListItem
           key={"Important"}
           href="/tasks/important"
           text="Important"
           icon={<StarBorderOutlinedIcon />}
         />
 
-        <MenuItem
+        <MenuListItem
           key={"Done"}
           href="/tasks/done"
           text="Done"
@@ -69,28 +69,28 @@ export default function LeftSidebar() {
 
       <List dense sx={{marginTop: "30px"}}>
 
-        <MenuItem
+        <MenuListItem
           key={"To Eat"}
           href="/tasks/1"
           text="To Eat"
           icon={<SquareRoundedIcon color='primary'/>}
         />
 
-        <MenuItem
+        <MenuListItem
           key={"To Buy"}
           href="/tasks/2"
           text="To Buy"
           icon={<SquareRoundedIcon color='warning'/>}
         />
 
-        <MenuItem
+        <MenuListItem
           key={"To Read"}
           href="/tasks/3"
           text="To Read"
           icon={<SquareRoundedIcon color='secondary'/>}
         />
 
-        <MenuItem
+        <MenuListItem
           key={"To Watch"}
           href="/tasks/4"
           text="To Watch"
