@@ -2,10 +2,10 @@ import * as React from "react";
 import TopBar from "../../components/TopBar";
 import LeftSidebar from "../../components/LeftSidebar";
 import MainContent from '../../components/MainContent';
-import FloatingAddButton from '../../components/FloatingAddButton';
+import AddButton from '../../components/AddButton';
 import NewTaskModal from "../../components/NewTaskModal";
 
-const floatingAddButtonStyles = {
+const addButtonStyles = {
   position: "absolute",
   left: 30,
   bottom: 30,
@@ -24,8 +24,8 @@ function Tasks() {
       <LeftSidebar />
       <MainContent />
 
-      <FloatingAddButton
-        sx={floatingAddButtonStyles}
+      <AddButton
+        sx={addButtonStyles}
         handleClick={openModal}
       />
       <NewTaskModal
