@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
@@ -25,6 +26,10 @@ const newTaskModalStyle = {
 };
 
 export default function NewTaskModal(props) {
+  const deleteLabel = () => {
+    console.info('You clicked the delete icon.');
+  };
+
   return (
     <Modal
       open={props.isOpen}
@@ -67,6 +72,14 @@ export default function NewTaskModal(props) {
               <IconButton aria-label="priority">
                 <TagRoundedIcon />
               </IconButton>
+                <Chip
+                  label="To Eat"
+                  // onClick={handleClick}
+                  onDelete={deleteLabel}
+                  variant="outlined"
+                  color="success"
+                  size="small"
+                />
             </Box>
             <Box>
               <IconButton aria-label="priority">
