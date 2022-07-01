@@ -33,24 +33,26 @@ export default function NewTaskModal(props) {
       <Box sx={newTaskModalStyle}>
         <Card elevation={0}>
 
-          <CardHeader
-            title={
-              <TextField
+          <CardHeader title={"Add New Task"} />
+
+          <CardContent
+            sx={{display: "flex", flexDirection: "column", gap: "20px"}}
+          >
+
+            <TextField
               fullWidth
               id="task-name"
               label="Task Name"
-              variant="outlined"
-            />}
-          />
+              variant="filled"
+            />
 
-          <CardContent>
             <TextField
               fullWidth
               id="description"
               label="Description"
               multiline
               rows={4}
-              variant="outlined"
+              variant="filled"
             />
           </CardContent>
 
