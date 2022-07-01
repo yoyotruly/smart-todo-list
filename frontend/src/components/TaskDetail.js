@@ -16,6 +16,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import TextField from '@mui/material/TextField';
 
 export default function RecipeReviewCard(props) {
   return (
@@ -110,6 +111,18 @@ export default function RecipeReviewCard(props) {
                 }
               />
             </ListItemButton>
+          </ListItem>
+
+          <ListItem sx={{marginTop: "25px"}}>
+            <TextField
+              fullWidth
+              id="notes"
+              label="Notes"
+              placeholder="Add notes"
+              multiline
+              rows={4}
+              variant="filled"
+            />
           </ListItem>
 
         </List>
