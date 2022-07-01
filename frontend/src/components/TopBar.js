@@ -17,7 +17,6 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-
 import grey from '@mui/material/colors/grey';
 
 const drawerWidth = 240;
@@ -61,8 +60,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-
-
 export default function TopBar() {
   const [anchorElUserMenu, setAnchorElUserMenu] = React.useState(null);
   const open = Boolean(anchorElUserMenu);
@@ -77,7 +74,7 @@ export default function TopBar() {
         width: `calc(100% - ${drawerWidth}px)`,
         ml: `${drawerWidth}px`,
         zIndex: (theme) => theme.zIndex.drawer + 1,
-        backgroundColor: grey[200]
+        backgroundColor: grey[100]
       }}
     >
 
@@ -93,7 +90,7 @@ export default function TopBar() {
           <StyledInputBase
             placeholder="Search…"
             inputProps={{ 'aria-label': 'search' }}
-            sx={{color: "grey.700"}}
+            sx={{color: "grey.900"}}
           />
         </Search>
 
