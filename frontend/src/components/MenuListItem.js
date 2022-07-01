@@ -13,7 +13,6 @@ export default function MenuListItem(props) {
       <ListItemButton>
         <ListItemIcon>
           {props.icon}
-          {/* <SummarizeOutlinedIcon /> */}
         </ListItemIcon>
         <ListItemText primary={props.text} />
       </ListItemButton>
