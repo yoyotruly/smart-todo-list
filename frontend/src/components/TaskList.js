@@ -3,23 +3,21 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CircleCheckbox from './CircleCheckbox';
 
-export default function TaskList() {
+const drawerWidth = 240;
+
+export default function TaskList(props) {
   return (
     <List
-      sx={{
-        width: '100%',
-        bgcolor: "background.paper"
-      }}
+    sx={{
+      maxWidth: `calc(100% - ${drawerWidth}px)`,
+      ml: `calc(0.5% + ${drawerWidth}px)`,
+    }}
     >
 
       <ListItem alignItems="flex-start">
-        <ListItemIcon>
-          <CheckCircleIcon fontSize="large" color="primary"/>
-        </ListItemIcon>
+        <CircleCheckbox />
         <ListItemText
           primary="Buy ugly vegetables from the Farmer's Market this weekend"
           secondary={
@@ -33,9 +31,7 @@ export default function TaskList() {
       <Divider component="li" />
 
       <ListItem alignItems="flex-start">
-        <ListItemIcon>
-          <RadioButtonUncheckedIcon fontSize='large'/>
-        </ListItemIcon>
+        <CircleCheckbox />
         <ListItemText
           primary="Rewatch Hawk and Chick with the kids"
           secondary={
