@@ -38,9 +38,9 @@ const pageElements = pages.map(page => (
   />
 ))
 
-export default function MenuList() {
+export default function MenuList(props) {
   return (
-    <List dense>
+    <List dense sx={props.style}>
       {pageElements}
     </List>
   )

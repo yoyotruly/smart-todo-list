@@ -34,9 +34,9 @@ const labelPageElements = labelPages.map(labelPage => (
   />
 ))
 
-export default function MenuList() {
+export default function MenuList(props) {
   return (
-    <List dense sx={{marginTop: "30px"}}>
+    <List dense sx={props.style}>
       {labelPageElements}
     </List>
   )

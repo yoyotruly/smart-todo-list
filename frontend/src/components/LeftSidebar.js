@@ -27,18 +27,12 @@ export default function LeftSidebar() {
         <img
           src={`${process.env.PUBLIC_URL}/logo-light.png`}
           alt="logo"
-          height="50px"
+          height="52px"
         />
-
       </Toolbar>
 
-      <List dense>
-        <MenuListPages />
-      </List>
-
-      <List dense sx={{marginTop: "30px"}}>
-        <MenuListLabels />
-      </List>
+      <MenuListPages style={{marginTop: "20px"}} />
+      <MenuListLabels style={{marginTop: "35px"}} />
 
     </Drawer>
   );
