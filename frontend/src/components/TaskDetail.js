@@ -9,7 +9,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import CircleCheckbox from './CircleCheckbox';
 import TaskDetailOptions from './TaskDetailOptions';
 
-export default function RecipeReviewCard(props) {
+export default function TaskDetail(props) {
   return (
     <Container>
       <Card
