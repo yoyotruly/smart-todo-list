@@ -50,9 +50,9 @@ export default function DialogSelect(props) {
 
           {props.menuItems.map(item => {
             return (
-              <MenuItem>
+              <MenuItem onClick={() => props.selectMenuItem(item.name)}>
                 <Typography variant="body2">
-                  {item}
+                  {item.name}
                 </Typography>
               </MenuItem>
               )

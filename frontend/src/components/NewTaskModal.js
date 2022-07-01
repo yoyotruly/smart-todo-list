@@ -29,9 +29,20 @@ const newTaskModalStyle = {
 };
 
 export default function NewTaskModal(props) {
-  const [label, setLabel] = React.useState("To Eat");
-
+  const [label, setLabel] = React.useState("");
+  const selectLabel = (label) => setLabel(label);
   const deleteLabel = () => setLabel("");
+
+  let labelColor;
+  if (label === "To Eat") {
+    labelColor = "primary";
+  } else if (label === "To Buy") {
+    labelColor = "warning";
+  } else if (label === "To Read") {
+    labelColor = "secondary";
+  } else if (label === "To Watch") {
+    labelColor = "success";
+  };
 
   return (
     <Modal
@@ -81,7 +92,13 @@ export default function NewTaskModal(props) {
             <Box sx={{display: "flex", alignItems: "center"}}>
               <ClickMenu
                 icon={<TagRoundedIcon sx={{ fontSize: "20px" }} />}
-                menuItems={["To Eat", "To Buy", "To Read", "To Watch"]}
+                menuItems={[
+                  {id: 1, name: "To Eat"},
+                  {id: 2, name: "To Buy"},
+                  {id: 3, name: "To Read"},
+                  {id: 4, name: "To Watch"}
+                ]}
+                selectMenuItem={selectLabel}
               />
                 {label &&
                   <Chip
@@ -89,12 +106,12 @@ export default function NewTaskModal(props) {
                     // onClick={handleClick}
                     onDelete={deleteLabel}
                     variant="outlined"
-                    color="success"
+                    color={labelColor}
                     size="small"
                   />
                 }
             </Box>
-            <Box sx={{display: "flex"}}>
+            {/* <Box sx={{display: "flex"}}>
               <ClickMenu
                 icon={<FlagOutlinedIcon sx={{ fontSize: "20px" }} />}
                 menuItems={["High", "Medium", "Low"]}
@@ -106,7 +123,7 @@ export default function NewTaskModal(props) {
               <ClickMenu
                 icon={<AccessAlarmOutlinedIcon sx={{ fontSize: "20px" }} />}
               />
-            </Box>
+            </Box> */}
 
           </CardActions>
 
