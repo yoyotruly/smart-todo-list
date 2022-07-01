@@ -12,7 +12,7 @@ import Divider from '@mui/material/Divider';
 export default function TaskListItem(props) {
 
   return (
-    <Card elevation={0} >
+    <Card elevation={0} sx={{backgroundColor: "inherit"}}>
 
       <Box sx={{display: "flex", alignItems: "center"}}>
         <CircleCheckbox />
