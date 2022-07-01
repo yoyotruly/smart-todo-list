@@ -6,8 +6,8 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 export default function Checkboxes() {
   return (
     <Checkbox
-      icon={<RadioButtonUncheckedIcon />}
-      checkedIcon={<CheckCircleIcon />}
+      icon={<RadioButtonUncheckedIcon color="primary" />}
+      checkedIcon={<CheckCircleIcon color="disabled" />}
       size="large"
       sx={{
         paddingLeft: 0,
