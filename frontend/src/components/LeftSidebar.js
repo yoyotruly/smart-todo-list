@@ -1,6 +1,8 @@
+import List from '@mui/material/List';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
-import MenuList from './MenuList';
+import MenuListPages from './MenuListPages';
+import MenuListLabels from './MenuListPages';
 
 const leftSidebarWidth = 240;
 
@@ -10,7 +12,9 @@ const leftSidebarStyles = {
   '& .MuiDrawer-paper': {
     width: leftSidebarWidth,
     boxSizing: 'border-box',
-  }
+  },
+  backgroundColor: "tomato",
+
 }
 
 export default function LeftSidebar() {
@@ -18,11 +22,17 @@ export default function LeftSidebar() {
     <Drawer
       sx={leftSidebarStyles}
       variant="permanent"
-      anchor="left"
+      anchor="right"
     >
 
       <Toolbar />
-      <MenuList />
+      <List dense>
+        <MenuListPages />
+      </List>
+
+      <List dense sx={{marginTop: "30px"}}>
+        <MenuListLabels />
+      </List>
 
     </Drawer>
   );
