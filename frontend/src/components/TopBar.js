@@ -18,14 +18,15 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
+import grey from '@mui/material/colors/grey';
+
 const drawerWidth = 240;
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.white, 0.55),
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
@@ -60,6 +61,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
 export default function TopBar() {
   const [anchorElUserMenu, setAnchorElUserMenu] = React.useState(null);
   const open = Boolean(anchorElUserMenu);
@@ -73,31 +76,31 @@ export default function TopBar() {
       sx={{
         width: `calc(100% - ${drawerWidth}px)`,
         ml: `${drawerWidth}px`,
-        zIndex: (theme) => theme.zIndex.drawer + 1
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+        backgroundColor: grey[200]
       }}
     >
 
       <Toolbar
         disableGutters
-        sx={{
-          display: "flex"
-        }}
+        sx={{display: "flex"}}
       >
 
         <Search sx={{flexGrow: 1}}>
           <SearchIconWrapper>
-            <SearchIcon />
+            <SearchIcon sx={{color: "grey.700"}}/>
           </SearchIconWrapper>
           <StyledInputBase
             placeholder="Search…"
             inputProps={{ 'aria-label': 'search' }}
+            sx={{color: "grey.700"}}
           />
         </Search>
 
         <IconButton
           size="large"
           aria-label="show 3 new notifications"
-          color="inherit"
+          sx={{color: "grey.700"}}
         >
           <Badge badgeContent={3} color="error">
             <NotificationsNoneIcon />
@@ -113,7 +116,7 @@ export default function TopBar() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar alt="Remy Sharp" src={bob} />
+            <Avatar alt="Bob" src={bob} />
           </IconButton>
         </Tooltip>
 
