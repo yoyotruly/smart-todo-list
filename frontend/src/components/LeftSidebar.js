@@ -12,9 +12,7 @@ const leftSidebarStyles = {
   '& .MuiDrawer-paper': {
     width: leftSidebarWidth,
     boxSizing: 'border-box',
-  },
-  backgroundColor: "tomato",
-
+  }
 }
 
 export default function LeftSidebar() {
@@ -22,7 +20,7 @@ export default function LeftSidebar() {
     <Drawer
       sx={leftSidebarStyles}
       variant="permanent"
-      anchor="right"
+      anchor="left"
     >
 
       <Toolbar />

@@ -31,7 +31,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 
 const taskListStyles = {
   maxWidth: `calc(100% - ${leftSidebarWidth}px)`,
-  ml: `calc(0.5% + ${leftSidebarWidth}px)`,
+  ml: `${leftSidebarWidth}px`
 }
 
 export default function RightSidebar() {
