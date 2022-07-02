@@ -10,6 +10,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import TagRoundedIcon from '@mui/icons-material/TagRounded';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
+import FlagIcon from '@mui/icons-material/Flag';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
 import Typography from '@mui/material/Typography';
@@ -63,7 +64,7 @@ export default function NewTaskModal(props) {
     })
   }
 
-  let labelColor;
+  let labelColor = "inherit";
   if (label === "To Eat") {
     labelColor = "primary";
   } else if (label === "To Buy") {
@@ -86,6 +87,15 @@ export default function NewTaskModal(props) {
       }
     })
   }
+
+  let priorityColor = "inherit";
+  if (priority === "High") {
+    priorityColor = "error";
+  } else if (priority === "Medium") {
+    priorityColor = "warning";
+  } else if (priority === "Low") {
+    priorityColor = "success";
+  };
 
   const handleSubmit = () => {
     console.log(formData, "submitted")
@@ -142,7 +152,7 @@ export default function NewTaskModal(props) {
           >
             <Box sx={{display: "flex", alignItems: "center"}}>
               <ClickMenu
-                icon={<TagRoundedIcon sx={{ fontSize: "20px" }} />}
+                icon={<TagRoundedIcon color={labelColor} sx={{ fontSize: "20px" }} />}
                 type="label"
                 menuItems={labels}
                 handleClick={handleLabelSelection}
@@ -158,7 +168,11 @@ export default function NewTaskModal(props) {
             </Box>
             <Box sx={{display: "flex", alignItems: "center"}}>
               <ClickMenu
-                icon={<FlagOutlinedIcon sx={{ fontSize: "20px" }} />}
+                icon={
+                  priority ?
+                  <FlagIcon color={priorityColor} sx={{ fontSize: "20px" }} /> :
+                  <FlagOutlinedIcon sx={{ fontSize: "20px" }} />
+                }
                 menuItems={priorities}
                 handleClick={handlePrioritySelection}
               />
