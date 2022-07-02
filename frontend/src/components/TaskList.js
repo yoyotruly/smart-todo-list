@@ -18,7 +18,7 @@ export default function TaskList(props) {
         label={value.label}
         isComplete={value.is_complete}
         toggle={() => props.toggle(key)}
-        setTasksData={props.setTasksData}
+        handleDelete={props.handleDelete}
       />)
     taskElements.push(taskElement)
   }

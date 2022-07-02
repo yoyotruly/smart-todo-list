@@ -22,6 +22,25 @@ function Overview() {
     .then(data => setTasksData(data))
   }, [])
 
+  const handleDelete = (id) => {
+    setTasksData(prevTasksData => {
+      return prevTasksData.filter(task => task.task_id !== id)
+    })
+  }
+
+  // const handleDelete = (id) => {
+  //   fetch(
+  //     `http://localhost:8080/api/tasks/${id}`,
+  //     {method: "DELETE"}
+  //     )
+  //     .then(res => res.json())
+  //     .then(id => setTasksData(prevTasksData => {
+  //       return prevTasksData.filter(task => task.task_id !== id)
+  //     }))
+  //     .catch((error) => {
+  //       console.error('Error:', error);
+  //     });
+  // }
 
   const [isOpen, setOpenModal] = React.useState(false);
   const openModal = () => setOpenModal(true);
@@ -33,13 +52,14 @@ function Overview() {
       <LeftSidebar />
       <MainContent
         tasksData={tasksData}
-        setTasksData={setTasksData}
+        handleDelete={handleDelete}
       />
 
       <AddButton
         sx={addButtonStyles}
         handleClick={openModal}
       />
+
       <NewTaskModal
         isOpen={isOpen}
         handleClose={closeModal}
