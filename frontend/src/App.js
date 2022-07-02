@@ -2,9 +2,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import User from './components/User';
 import TaskOverview from "./pages/tasks/Overview";
-import TaskDone from "./pages/tasks/Done";
-import TaskImportant from "./pages/tasks/Important";
-import TaskLabel from "./pages/tasks/Label";
 
 function App() {
   return (
