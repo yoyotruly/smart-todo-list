@@ -8,7 +8,7 @@ export default function Checkboxes(props) {
   return (
     <Checkbox
       icon={<RadioButtonUncheckedIcon color="primary" />}
-      checkedIcon={<CheckCircleIcon color="disabled" />}
+      checkedIcon={<CheckCircleIcon sx={{color: "text.secondary"}} />}
       size="large"
       sx={{
         paddingLeft: 0,
