@@ -49,9 +49,9 @@ router
     }
   })
   .delete((req, res) => {
-    const { id } = req.params;
+    const { taskId } = req.params;
 
-    taskModel.deleteTaskById(id)
+    taskModel.deleteTaskById(taskId)
       .then(data => res.json(data))
       .catch(err => {
         console.error(err)
