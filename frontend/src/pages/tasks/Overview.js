@@ -31,7 +31,10 @@ function Overview() {
     <div>
       <TopBar />
       <LeftSidebar />
-      <MainContent tasksData={tasksData}/>
+      <MainContent
+        tasksData={tasksData}
+        setTasksData={setTasksData}
+      />
 
       <AddButton
         sx={addButtonStyles}
