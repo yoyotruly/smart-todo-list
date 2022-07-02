@@ -49,7 +49,8 @@ const appbarStyles = {
   borderColor: "primary.main",
 }
 
-export default function RightSidebar() {
+export default function RightSidebar(props) {
+
   const [isOpen, setOpen] = React.useState(false);
   const toggle = (id) => {
     console.log(id);
@@ -60,7 +61,7 @@ export default function RightSidebar() {
     <Box sx={{ display: 'flex' }}>
       <Main open={isOpen}>
         <TaskList
-          tasksData={tasks}
+          tasksData={props.tasksData}
           listStyle={taskListStyles}
           appbarStyle={appbarStyles}
           toggle={toggle}

@@ -6,17 +6,20 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 export default function TaskList(props) {
-
-  const taskElements = props.tasksData.map(task => (
-    <TaskListItem
-      key={task.id}
-      title={task.title}
-      due_date={task.due_date}
-      priority={task.priority}
-      label={task.label}
-      toggle={() => props.toggle(task.id)}
-    />
-  ))
+  const taskElements = [];
+  for (const [key, value] of Object.entries(props.tasksData)) {
+    const taskElement = (
+      <TaskListItem
+        key={key}
+        title={value.title}
+        dueDate={value.due_date}
+        priority={value.priority}
+        label={value.label}
+        isComplete={value.is_complete}
+        toggle={() => props.toggle(key)}
+      />)
+    taskElements.push(taskElement)
+  }
 
   return (
     <>

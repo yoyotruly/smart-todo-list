@@ -74,7 +74,7 @@ export default function Login() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               component="a"
-              href='/tasks'
+              href='/tasks/overview'
             >
               Log In
             </Button>

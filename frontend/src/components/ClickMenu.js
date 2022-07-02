@@ -52,7 +52,9 @@ export default function ClickMenu(props) {
             return (
               <MenuItem
                 key={item.id}
-                onClick={() => props.selectMenuItem(item.name)}>
+                onClick={() => props.handleClick(item)}
+                value={props.type}
+              >
                 <Typography variant="body2">
                   {item.name}
                 </Typography>

@@ -7,9 +7,7 @@ router
   .route("/")
   .get((req, res) => {
     labelModel.getAllLabels()
-      .then(labels => {
-        res.json({ labels })
-      })
+      .then(data => res.json(data))
       .catch(err => {
         console.error(err);
         res.send(err)
@@ -21,7 +19,7 @@ router
   .get((req, res) => {
     const { labelId } = req.params;
     labelModel.getLabelById(labelId)
-      .then(label => res.json({ label }))
+      .then(data => res.json(data))
       .catch(err => {
         console.error(err);
         res.send(err)

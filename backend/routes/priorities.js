@@ -7,7 +7,7 @@ router
   .route("/")
   .get((req, res) => {
     priorityModel.getAllPriorities()
-      .then(priorities => res.json({ priorities }))
+      .then(data => res.json(data))
       .catch(err => {
         console.error(err);
         res.send(err)
@@ -19,7 +19,7 @@ router
   .get((req, res) => {
     const { priorityId } = req.params;
     priorityModel.getPriorityById(priorityId)
-      .then(priority => res.json({ priority }))
+      .then(data => res.json(data))
       .catch(err => {
         console.error(err);
         res.send(err)

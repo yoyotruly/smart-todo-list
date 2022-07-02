@@ -10,8 +10,10 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import TagRoundedIcon from '@mui/icons-material/TagRounded';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
+import FlagIcon from '@mui/icons-material/Flag';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Typography from '@mui/material/Typography';
 import ClickMenu from './ClickMenu';
 import { labels } from "../data/labels";
@@ -30,11 +32,67 @@ const newTaskModalStyle = {
 };
 
 export default function NewTaskModal(props) {
-  const [label, setLabel] = React.useState("");
-  const selectLabel = (label) => setLabel(label);
-  const deleteLabel = () => setLabel();
+  const [formData, setFormData] = React.useState({
+    user_id: 1,
+    title: "",
+    description: "",
+    label_id: null,
+    priority_id: null,
+    due_date: null
+  });
 
-  let labelColor;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: value
+      }
+    })
+
+    const toEatKeywords = [/restauran/ig, /steakhous/ig, /eat/ig, /bistr/ig, /sush/ig, /pad tha/ig];
+    const toBuyKeywords = [/egg/ig, /turke/ig];
+    const toReadKeywords = [/harry pot/ig, /bookstor/ig, /book/ig];
+    const toWatchKeywords = [/movi/ig, /dr. strang/ig, /movie theate/ig, /netfli/ig, /youtub/ig]
+
+    const title = formData.title;
+    if (toEatKeywords.some(kw => title.match(kw))) {
+      setLabel("To Eat");
+    };
+
+    if (toBuyKeywords.some(kw => title.match(kw))) {
+      setLabel("To Buy");
+    };
+
+    if (toReadKeywords.some(kw => title.match(kw))) {
+      setLabel("To Read")
+    }
+
+    if (toWatchKeywords.some(kw => title.match(kw))) {
+      setLabel("To Watch")
+    }
+
+    if (title.length <= 1) {
+      setLabel()
+    }
+
+  }
+
+  const [label, setLabel] = React.useState(null);
+  const deleteLabel = () => setLabel();
+  const handleLabelSelection = (item) => {
+    setLabel(item.name);
+
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        label_id: item.id
+      }
+    })
+  }
+
+  let labelColor = "inherit";
   if (label === "To Eat") {
     labelColor = "primary";
   } else if (label === "To Buy") {
@@ -45,21 +103,44 @@ export default function NewTaskModal(props) {
     labelColor = "success";
   };
 
-  const [priority, setPriority] = React.useState("");
-  const selectPriority = (priority) => setPriority(priority);
-  const deletePriority = () => setPriority();
+  const [priority, setPriority] = React.useState(null);
+  const deletePriority = () => setPriority(null);
+  const handlePrioritySelection = (item) => {
+    setPriority(item.name);
 
-  const [formData, setFormData] = React.useState(
-    {title: "", description: ""}
-  );
-
-  const handleChange = (event) => {
     setFormData(prevFormData => {
       return {
         ...prevFormData,
-        [event.target.name]: event.target.value
+        priority_id: item.id
       }
     })
+  }
+
+  let priorityColor = "inherit";
+  if (priority === "High") {
+    priorityColor = "error";
+  } else if (priority === "Medium") {
+    priorityColor = "warning";
+  } else if (priority === "Low") {
+    priorityColor = "success";
+  };
+
+  const handleSubmit = () => {
+    fetch(
+      "http://localhost:8080/api/tasks",
+      {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-type": "application/json" }
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
+    props.addCount()
+    props.handleClose()
   }
 
   return (
@@ -90,6 +171,7 @@ export default function NewTaskModal(props) {
             <TextField
               fullWidth
               name="title"
+              value={formData.title}
               label="Task Name"
               variant="filled"
               onChange={handleChange}
@@ -98,6 +180,7 @@ export default function NewTaskModal(props) {
             <TextField
               fullWidth
               name="description"
+              value={formData.description}
               label="Description"
               multiline
               rows={4}
@@ -111,34 +194,35 @@ export default function NewTaskModal(props) {
           >
             <Box sx={{display: "flex", alignItems: "center"}}>
               <ClickMenu
-                id="label"
-                icon={<TagRoundedIcon sx={{ fontSize: "20px" }} />}
+                icon={<TagRoundedIcon color={labelColor} sx={{ fontSize: "20px" }} />}
+                type="label"
                 menuItems={labels}
-                selectMenuItem={selectLabel}
+                handleClick={handleLabelSelection}
               />
-                {label &&
-                  <Chip
-                    label={label}
-                    // onClick={handleClick}
-                    onDelete={deleteLabel}
-                    // variant="outlined"
-                    color={labelColor}
-                    size="small"
-                  />
-                }
+              {
+                label &&
+                <Chip
+                  label={label}
+                  onDelete={deleteLabel}
+                  color={labelColor}
+                  size="small"
+                />
+              }
             </Box>
             <Box sx={{display: "flex", alignItems: "center"}}>
               <ClickMenu
-                icon={<FlagOutlinedIcon sx={{ fontSize: "20px" }} />}
+                icon={
+                  priority ?
+                  <FlagIcon color={priorityColor} sx={{ fontSize: "20px" }} /> :
+                  <FlagOutlinedIcon sx={{ fontSize: "20px" }} />
+                }
                 menuItems={priorities}
-                selectMenuItem={selectPriority}
+                handleClick={handlePrioritySelection}
               />
               {priority &&
                 <Chip
                   label={priority}
-                  // onClick={handleClick}
                   onDelete={deletePriority}
-                  // variant="outlined"
                   size="small"
                 />
               }
@@ -162,7 +246,12 @@ export default function NewTaskModal(props) {
               <Button variant="outlined" onClick={props.handleClose}>
                 Cancel
               </Button>
-              <Button variant="contained">
+              <Button
+                type="submit"
+                variant="contained"
+                onClick={handleSubmit}
+                endIcon={<ChevronRightIcon />}
+              >
                 Add Task
               </Button>
           </CardActions>
