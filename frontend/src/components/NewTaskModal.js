@@ -199,14 +199,15 @@ export default function NewTaskModal(props) {
                 menuItems={labels}
                 handleClick={handleLabelSelection}
               />
-                {label &&
-                  <Chip
-                    label={label}
-                    onDelete={deleteLabel}
-                    color={labelColor}
-                    size="small"
-                  />
-                }
+              {
+                label &&
+                <Chip
+                  label={label}
+                  onDelete={deleteLabel}
+                  color={labelColor}
+                  size="small"
+                />
+              }
             </Box>
             <Box sx={{display: "flex", alignItems: "center"}}>
               <ClickMenu
