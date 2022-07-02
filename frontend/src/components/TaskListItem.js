@@ -11,21 +11,10 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import TagRoundedIcon from '@mui/icons-material/TagRounded';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import grey from '@mui/material/colors/grey';
 
 export default function TaskListItem(props) {
-
-  const handleDelete = (id) => {
-    fetch(
-      `http://localhost:8080/api/tasks/${props.id}`,
-      {method: "DELETE"}
-      )
-      .then(res => res.json())
-      .then(data => props.setTasksData(data))
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }
 
   return (
     <Card elevation={0} sx={{backgroundColor: "inherit"}}>
@@ -78,8 +67,8 @@ export default function TaskListItem(props) {
           </CardActionArea>
         </Box>
 
-        <IconButton aria-label="star" onClick={() => handleDelete(props.task_id)}>
-          <StarBorderOutlinedIcon />
+        <IconButton aria-label="delete" onClick={() => props.handleDelete(props.task_id)}>
+          <DeleteOutlineIcon />
         </IconButton>
 
       </Box>
