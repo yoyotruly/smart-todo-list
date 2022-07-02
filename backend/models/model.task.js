@@ -1,7 +1,14 @@
 const db = require("../db/index");
 
 const getAllTasks = () => {
-  const query = "SELECT * FROM tasks";
+  const query = `
+  SELECT *,
+         l.name AS label,
+         p.name AS priority
+    FROM tasks t
+         LEFT JOIN labels l ON l.id = t.label_id
+         LEFT JOIN priorities p ON p.id = t.priority_id
+  `;
 
   return db
     .query(query)
@@ -22,9 +29,12 @@ const addTask =  (task) => {
     RETURNING *;
   `;
   const params = [
-    user.name,
-    user.email,
-    user.password
+    task.user_id,
+    task.priority_id,
+    task.label_id,
+    task.title,
+    task.description,
+    task.due_date
   ];
 
   return db
@@ -39,9 +49,13 @@ const addTask =  (task) => {
 
 const getTaskById = (id) => {
   const query = `
-    SELECT *
-      FROM tasks
-     WHERE id = $1
+    SELECT *,
+           l.name AS label,
+           p.name AS priority
+      FROM tasks t
+           LEFT JOIN labels l ON l.id = t.label_id
+           LEFT JOIN priorities p ON p.id = t.priority_id
+     WHERE t.id = $1
   `;
   const param = [id];
 
@@ -59,19 +73,22 @@ const updateTaskById = (id, taskData) => {
   let query = `
     UPDATE tasks
     SET `;
+
   const param = [];
   Object.keys(taskData).forEach((key) => {
-    if(taskData[key]){
+    if (taskData[key]) {
       param.push(taskData[key]);
+
       param.length < 2 ?
-      query += `${key} = $${param.length}` :
-      query += `, ${key} = $${param.length}`
+        query += `${key} = $${param.length}` :
+        query += `, ${key} = $${param.length}`
     }
   })
+
   param.push(id);
+
   query += ` WHERE id = $${param.length}
     RETURNING *;`;
-  console.log(query);
 
   return db
     .query(query, param)
