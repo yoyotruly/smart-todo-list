@@ -137,8 +137,8 @@ export default function NewTaskModal(props) {
       .then(data => {
         console.log(data)
         props.setTasksData([
-          ...props.tasksData,
-          data
+          data,
+          ...props.tasksData
         ])
       })
       .catch((error) => {
