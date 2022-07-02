@@ -27,5 +27,3 @@ INSERT INTO tasks
   (user_id, label_id, title, description)
 VALUES
   (1, 4, 'Test Title', 'Test description.');
-
-

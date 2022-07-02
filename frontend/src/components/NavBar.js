@@ -12,15 +12,7 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="sticky">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <img src={"./logo-dark.png"} alt="The Sorting App!" width="200px" />
           <Button color="inherit">Features</Button>
           <Button color="inherit">Pricing</Button>
           <Button color="inherit">Contact</Button>
