@@ -18,25 +18,24 @@ router
     res.send("Create new task");
   })
 
-router
-  .route("/:taskId")
-  .get((req, res) => {
-    const { taskId } = req.params;
+  router
+  .put("/delete/:id", async(req, res) => {
+    try {
+      const result = await taskModel.deleteTaskById(req.params.id);
+      res.send(result);
+    } catch (error) {
+      console.error(error);
+    }
+  })
 
-    taskModel.getTaskById(taskId)
-      .then(task => res.json({ task }))
-      .catch(err => {
-        console.error(err);
-        res.send(err)
-      });
-  })
-  .put((req, res) => {
-    const { taskId } = req.params;
-    res.send(`Update task by id ${taskId}`);
-  })
-  .delete((req, res) => {
-    const { taskId } = req.params;
-    res.send(`Delete task by id ${taskId}`);
+router
+  .put("/:id", async(req, res) => {
+    try {
+      const result = await taskModel.updateTaskById(req.params.id, {...req.body});
+      res.send(result);
+    } catch (error) {
+      console.error(error);
+    }
   })
 
 module.exports = router;
