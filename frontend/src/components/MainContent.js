@@ -5,7 +5,6 @@ import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import TaskList from "./TaskList";
 import TaskDetail from "./TaskDetail";
-import { tasks } from "../data/tasks";
 
 const leftSidebarWidth = 240;
 const rightSidebarWidth = 700;
@@ -50,6 +49,14 @@ const appbarStyles = {
 }
 
 export default function RightSidebar() {
+  const [tasksData, setTasksData] = React.useState({});
+
+  React.useEffect(() => {
+    fetch(`http://localhost:8080/api/tasks`)
+    .then(res => res.json())
+    .then(data => setTasksData(data))
+  }, [])
+
   const [isOpen, setOpen] = React.useState(false);
   const toggle = (id) => {
     console.log(id);
@@ -60,7 +67,7 @@ export default function RightSidebar() {
     <Box sx={{ display: 'flex' }}>
       <Main open={isOpen}>
         <TaskList
-          tasksData={tasks}
+          tasksData={tasksData}
           listStyle={taskListStyles}
           appbarStyle={appbarStyles}
           toggle={toggle}
@@ -81,7 +88,7 @@ export default function RightSidebar() {
       >
 
         <Toolbar />
-        <TaskDetail task={tasks[0]}/>
+        <TaskDetail task={tasksData[0]}/>
 
       </Drawer>
     </Box>

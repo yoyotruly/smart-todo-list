@@ -12,14 +12,12 @@ import TagRoundedIcon from '@mui/icons-material/TagRounded';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import grey from '@mui/material/colors/grey';
 
-
 export default function TaskListItem(props) {
-
   return (
     <Card elevation={0} sx={{backgroundColor: "inherit"}}>
 
       <Box sx={{display: "flex", alignItems: "center"}}>
-        <CircleCheckbox />
+        <CircleCheckbox checked={props.isComplete}/>
 
         <Box sx={{flexGrow: 1}}>
           <CardActionArea onClick={props.toggle} sx={{width: "100%"}}>
@@ -30,27 +28,35 @@ export default function TaskListItem(props) {
 
               <Box sx={{display: "flex", gap: "20px", marginTop: "10px"}}>
 
-                <Box sx={{display: "flex", alignItems: "center", gap: "3px"}}>
-                  <EventOutlinedIcon sx={{ color: grey[700], fontSize: "15px" }} />
-                  <Typography variant="caption" color="text.secondary">
-                    {props.due_date}
-                  </Typography>
-                </Box>
+                {
+                  props.dueDate &&
+                  <Box sx={{display: "flex", alignItems: "center", gap: "3px"}}>
+                    <EventOutlinedIcon sx={{ color: grey[700], fontSize: "15px" }} />
+                    <Typography variant="caption" color="text.secondary">
+                      {props.due_date}
+                    </Typography>
+                  </Box>
+                }
 
-                <Box sx={{display: "flex", alignItems: "center", gap: "3px"}}>
-                  <FlagOutlinedIcon sx={{ color: grey[700], fontSize: "15px" }} />
-                  <Typography variant="caption" color="text.secondary">
-                    {props.priority}
-                  </Typography>
-                </Box>
+                {
+                  props.priority &&
+                  <Box sx={{display: "flex", alignItems: "center", gap: "3px"}}>
+                    <FlagOutlinedIcon sx={{ color: grey[700], fontSize: "15px" }} />
+                    <Typography variant="caption" color="text.secondary">
+                      {props.priority}
+                    </Typography>
+                  </Box>
+                }
 
-
-                <Box sx={{display: "flex", alignItems: "center", gap: "3px"}}>
-                  <TagRoundedIcon sx={{ color: grey[700], fontSize: "15px" }} />
-                  <Typography variant="caption" color="text.secondary" >
-                    {props.label}
-                  </Typography>
-                </Box>
+                {
+                  props.label &&
+                  <Box sx={{display: "flex", alignItems: "center", gap: "3px"}}>
+                    <TagRoundedIcon sx={{ color: grey[700], fontSize: "15px" }} />
+                    <Typography variant="caption" color="text.secondary" >
+                      {props.label}
+                    </Typography>
+                  </Box>
+                }
 
               </Box>
 
