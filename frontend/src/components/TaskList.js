@@ -16,7 +16,6 @@ export default function TaskList(props) {
         dueDate={value.due_date}
         priority={value.priority}
         label={value.label}
-        isComplete={value.is_complete}
         toggle={() => props.toggle(key)}
         handleDelete={props.handleDelete}
       />)

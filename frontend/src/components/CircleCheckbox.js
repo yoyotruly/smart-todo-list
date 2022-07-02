@@ -14,7 +14,7 @@ export default function Checkboxes(props) {
         paddingLeft: 0,
         marginRight: "10px"
       }}
-      checked={props.isComplete}
+      onClick={props.handleComplete}
     />
   );
 }
