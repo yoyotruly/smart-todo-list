@@ -13,6 +13,7 @@ import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import FlagIcon from '@mui/icons-material/Flag';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Typography from '@mui/material/Typography';
 import ClickMenu from './ClickMenu';
 import { labels } from "../data/labels";
@@ -49,6 +50,33 @@ export default function NewTaskModal(props) {
         [name]: value
       }
     })
+
+    const toEatKeywords = [/restauran/ig, /steakhous/ig, /eat/ig, /bistr/ig, /sush/ig, /pad tha/ig];
+    const toBuyKeywords = [/egg/ig, /turke/ig];
+    const toReadKeywords = [/harry pot/ig, /bookstor/ig, /book/ig];
+    const toWatchKeywords = [/movi/ig, /dr. strang/ig, /movie theate/ig, /netfli/ig, /youtub/ig]
+
+    const title = formData.title;
+    if (toEatKeywords.some(kw => title.match(kw))) {
+      setLabel("To Eat");
+    };
+
+    if (toBuyKeywords.some(kw => title.match(kw))) {
+      setLabel("To Buy");
+    };
+
+    if (toReadKeywords.some(kw => title.match(kw))) {
+      setLabel("To Read")
+    }
+
+    if (toWatchKeywords.some(kw => title.match(kw))) {
+      setLabel("To Watch")
+    }
+
+    if (title.length <= 1) {
+      setLabel()
+    }
+
   }
 
   const [label, setLabel] = React.useState(null);
@@ -98,8 +126,6 @@ export default function NewTaskModal(props) {
   };
 
   const handleSubmit = () => {
-    console.log(JSON.stringify(formData), "submitted")
-
     fetch(
       "http://localhost:8080/api/tasks",
       {
@@ -112,6 +138,9 @@ export default function NewTaskModal(props) {
       .catch((error) => {
         console.error('Error:', error);
       });
+
+    props.addCount()
+    props.handleClose()
   }
 
   return (
@@ -217,8 +246,10 @@ export default function NewTaskModal(props) {
                 Cancel
               </Button>
               <Button
+                type="submit"
                 variant="contained"
                 onClick={handleSubmit}
+                endIcon={<ChevronRightIcon />}
               >
                 Add Task
               </Button>
