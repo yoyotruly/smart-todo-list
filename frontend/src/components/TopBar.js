@@ -18,6 +18,7 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import grey from '@mui/material/colors/grey';
+import { useTheme } from '@mui/material/styles';
 
 const drawerWidth = 240;
 
@@ -66,6 +67,8 @@ export default function TopBar() {
   const handleClickUserMenu = (event) => setAnchorElUserMenu(event.currentTarget)
   const handleCloseUserMenu = () => setAnchorElUserMenu(null);
 
+  const theme = useTheme();
+
   return (
     <AppBar
       position="fixed"
@@ -74,8 +77,8 @@ export default function TopBar() {
         width: `calc(100% - ${drawerWidth}px)`,
         ml: `${drawerWidth}px`,
         zIndex: (theme) => theme.zIndex.drawer + 1,
-        backgroundColor: grey[100],
-        borderColor: grey[300],
+        backgroundColor: theme.palette.mode === 'dark' ? grey[900] : grey[100],
+        borderColor: theme.palette.mode === 'dark' ? grey[800] : grey[300],
         borderBottomWidth: "1px",
         borderBottomStyle: "solid"
       }}
@@ -88,19 +91,21 @@ export default function TopBar() {
 
         <Search sx={{flexGrow: 1}}>
           <SearchIconWrapper>
-            <SearchIcon sx={{color: "grey.700"}}/>
+            <SearchIcon
+              sx={{color: theme.palette.mode === 'dark' ? "white" : grey[700]}}
+            />
           </SearchIconWrapper>
           <StyledInputBase
             placeholder="Search…"
             inputProps={{ 'aria-label': 'search' }}
-            sx={{color: "grey.900"}}
+            sx={{color: theme.palette.mode === 'dark' ? "white" : grey[900]}}
           />
         </Search>
 
         <IconButton
           size="large"
           aria-label="show 3 new notifications"
-          sx={{color: "grey.700"}}
+          sx={{color: theme.palette.mode === 'dark' ? "white" : grey[700]}}
         >
           <Badge badgeContent={3} color="error">
             <NotificationsNoneIcon />

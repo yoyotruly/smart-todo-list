@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import TaskList from "./TaskList";
 import TaskDetail from "./TaskDetail";
 import { tasks } from "../data/tasks";
+import { useTheme } from '@mui/material/styles';
 
 const leftSidebarWidth = 240;
 const rightSidebarWidth = 700;
@@ -38,18 +39,20 @@ const taskListStyles = {
   mt: `${topBarHeight + 40}px`
 }
 
-const appbarStyles = {
-  maxWidth: `calc(100% - ${leftSidebarWidth}px)`,
-  ml: `${leftSidebarWidth}px`,
-  mt: `${topBarHeight}px`,
-  backgroundColor: "common.white",
-  color: "inherit",
-  borderBottomWidth: "5px",
-  borderBottomStyle: "solid",
-  borderColor: "primary.main",
-}
-
 export default function RightSidebar(props) {
+
+  const theme = useTheme();
+
+  const appbarStyles = {
+    maxWidth: `calc(100% - ${leftSidebarWidth}px)`,
+    ml: `${leftSidebarWidth}px`,
+    mt: `${topBarHeight}px`,
+    backgroundColor: theme.palette.mode === 'dark' ? "inherit" : "common.white",
+    color: "inherit",
+    borderBottomWidth: "5px",
+    borderBottomStyle: "solid",
+    borderColor: "primary.main",
+  }
 
   const [isOpen, setOpen] = React.useState(false);
   const toggle = (id) => {

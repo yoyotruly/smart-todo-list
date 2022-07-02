@@ -12,8 +12,10 @@ import TagRoundedIcon from '@mui/icons-material/TagRounded';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import grey from '@mui/material/colors/grey';
+import { useTheme } from '@mui/material/styles';
 
 export default function TaskListItem(props) {
+  const theme = useTheme();
 
   const [isComplete, setIsComplete] = React.useState(false);
   const handleComplete = () => {
@@ -34,7 +36,14 @@ export default function TaskListItem(props) {
             <CardContent>
               {
                 isComplete ?
-                  <Typography variant="body1" sx={{mb: "5px", color: grey[600], textDecoration: "line-through"}} >
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      mb: "5px",
+                      color: theme.palette.mode === 'dark' ? grey[200] : grey[600],
+                      textDecoration: "line-through"
+                    }}
+                  >
                     {props.title}
                   </Typography> :
                   <Typography variant="body1" color="text.primary" sx={{mb: "5px"}}>
