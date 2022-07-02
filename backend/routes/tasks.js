@@ -8,30 +8,50 @@ router
   .get((req, res) => {
     // const priority = req.query.priority;
     taskModel.getAllTasks()
-      .then(tasks => res.json({ tasks }))
+      .then(data => res.json(data))
       .catch(err => {
         console.error(err);
         res.send(err)
       });
   })
   .post((req, res) => {
-    res.send("Create new task");
+    const task = req.body;
+
+    taskModel.addTask(task)
+      .then(data => {
+        if (!data) {
+          return res.send({error: "error"});
+        }
+        res.json(data)
+      }).catch(err => {
+        console.error(err);
+        res.send(err)
+      });
   })
 
-  router
-  .put("/delete/:id", async(req, res) => {
+router
+  .route("/:taskId")
+  .get((req, res) => {
+    const { taskId } = req.params;
+
+    taskModel.getTaskById(taskId)
+      .then(data => res.json(data))
+      .catch(err => {
+        console.error(err);
+        res.send(err)
+      });
+  })
+  .put(async (req, res) => {
     try {
-      const result = await taskModel.deleteTaskById(req.params.id);
+      const result = await taskModel.updateTaskById(req.params.id, {...req.body});
       res.send(result);
     } catch (error) {
       console.error(error);
     }
   })
-
-router
-  .put("/:id", async(req, res) => {
+  .delete(async (req, res) => {
     try {
-      const result = await taskModel.updateTaskById(req.params.id, {...req.body});
+      const result = await taskModel.deleteTaskById(req.params.id);
       res.send(result);
     } catch (error) {
       console.error(error);
