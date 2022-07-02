@@ -98,11 +98,15 @@ export default function NewTaskModal(props) {
     })
 
     const toEatKeywords = [/restauran/ig, /steakhous/ig, /eat/ig, /bistr/ig, /sush/ig, /pad tha/ig];
-    const toBuyKeywords = [/egg/ig, /turke/ig, /buy/ig];
     const toReadKeywords = [/harry pot/ig, /bookstor/ig, /book/ig, /read/ig];
+    const toBuyKeywords = [/egg/ig, /turke/ig, /buy/ig];
     const toWatchKeywords = [/movi/ig, /dr. strang/ig, /movie theate/ig, /netfli/ig, /youtub/ig, /watch/ig]
 
     const title = formData.title;
+    if (toReadKeywords.some(kw => title.match(kw))) {
+      handleLabelSelection({id: 3, name: "To Read"});
+    }
+
     if (toBuyKeywords.some(kw => title.match(kw))) {
       handleLabelSelection({id: 1, name: "To Buy"});
     };
@@ -110,10 +114,6 @@ export default function NewTaskModal(props) {
     if (toEatKeywords.some(kw => title.match(kw))) {
       handleLabelSelection({id: 2, name: "To Eat"});
     };
-
-    if (toReadKeywords.some(kw => title.match(kw))) {
-      handleLabelSelection({id: 3, name: "To Read"});
-    }
 
     if (toWatchKeywords.some(kw => title.match(kw))) {
       handleLabelSelection({id: 4, name: "To Watch"});
