@@ -1,3 +1,4 @@
+import React from "react";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -13,6 +14,19 @@ import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import grey from '@mui/material/colors/grey';
 
 export default function TaskListItem(props) {
+
+  const handleDelete = (id) => {
+    fetch(
+      `http://localhost:8080/api/tasks/${props.id}`,
+      {method: "DELETE"}
+      )
+      .then(res => res.json())
+      .then(data => props.setTasksData(data))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+
   return (
     <Card elevation={0} sx={{backgroundColor: "inherit"}}>
 
@@ -64,7 +78,7 @@ export default function TaskListItem(props) {
           </CardActionArea>
         </Box>
 
-        <IconButton aria-label="star">
+        <IconButton aria-label="star" onClick={() => handleDelete(props.task_id)}>
           <StarBorderOutlinedIcon />
         </IconButton>
 

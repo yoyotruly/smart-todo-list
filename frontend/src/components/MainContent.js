@@ -62,6 +62,7 @@ export default function RightSidebar(props) {
       <Main open={isOpen}>
         <TaskList
           tasksData={props.tasksData}
+          setTasksData={props.setTasksData}
           listStyle={taskListStyles}
           appbarStyle={appbarStyles}
           toggle={toggle}
