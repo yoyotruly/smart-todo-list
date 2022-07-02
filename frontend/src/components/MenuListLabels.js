@@ -1,6 +1,6 @@
 import React from "react";
 import List from '@mui/material/List';
-import SquareRoundedIcon from '@mui/icons-material/SquareRounded';
+import TagRoundedIcon from '@mui/icons-material/TagRounded';
 import MenuListItem from './MenuListItem';
 
 export default function MenuList(props) {
@@ -21,7 +21,7 @@ export default function MenuList(props) {
         key={key}
         href={`/tasks/${label.id}`}
         text={label.name}
-        icon={<SquareRoundedIcon color={colors[key]}/>}
+        icon={<TagRoundedIcon color={colors[key]}/>}
       />
     )
     labelPageElements.push(labelPageElement)
