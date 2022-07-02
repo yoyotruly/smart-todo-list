@@ -29,16 +29,16 @@ const pages = [
   }
 ]
 
-const pageElements = pages.map(page => (
-  <MenuListItem
-    key={page.name}
-    href={`/tasks/${page.name}`}
-    text={page.name}
-    icon={page.icon}
-  />
-))
-
 export default function MenuList(props) {
+  const pageElements = pages.map(page => (
+    <MenuListItem
+      key={page.name}
+      href={`/tasks/${page.name}`}
+      text={page.name}
+      icon={page.icon}
+    />
+  ))
+
   return (
     <List dense sx={props.style}>
       {pageElements}
