@@ -16,9 +16,9 @@ function App() {
           <Route path="tasks">
             <Route index />
             <Route path="overview" element={<TaskOverview />} />
-            <Route path=":labelId" element={<TaskLabel />} />
-            <Route path="done" element={<TaskDone />} />
-            <Route path="important" element={<TaskImportant />} />
+            <Route path=":labelId" element={<TaskOverview />} />
+            <Route path="done" element={<TaskOverview />} />
+            <Route path="important" element={<TaskOverview />} />
           </Route>
         </Routes>
       </Router>
