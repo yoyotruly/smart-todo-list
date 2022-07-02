@@ -6,7 +6,7 @@ import AddButton from '../../components/AddButton';
 import NewTaskModal from "../../components/NewTaskModal";
 
 const addButtonStyles = {
-  position: "absolute",
+  position: "fixed",
   left: 30,
   bottom: 30,
   zIndex: (theme) => theme.zIndex.drawer + 1
