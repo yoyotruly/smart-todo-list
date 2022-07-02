@@ -3,11 +3,16 @@ const db = require("../db/index");
 const getAllTasks = () => {
   const query = `
   SELECT *,
+         t.id AS task_id,
+         l.id AS label_id,
          l.name AS label,
+         p.id AS priority_id,
          p.name AS priority
     FROM tasks t
          LEFT JOIN labels l ON l.id = t.label_id
          LEFT JOIN priorities p ON p.id = t.priority_id
+   WHERE is_active = TRUE
+   ORDER BY is_complete, created_at DESC
   `;
 
   return db
@@ -22,11 +27,25 @@ const getAllTasks = () => {
 
 const addTask =  (task) => {
   const query = `
-    INSERT INTO tasks
-      (user_id, priority_id, label_id, title, description, due_date)
-    VALUES
-      ($1, $2, $3, $4, $5, $6)
-    RETURNING *;
+    WITH new_task AS (
+      INSERT INTO tasks
+        (user_id, priority_id, label_id, title, description, due_date)
+      VALUES
+        ($1, $2, $3, $4, $5, $6)
+      RETURNING *
+    )
+
+    SELECT *,
+           t.id AS task_id,
+           l.id AS label_id,
+           l.name AS label,
+           p.id AS priority_id,
+           p.name AS priority
+      FROM new_task t
+           LEFT JOIN labels l ON l.id = t.label_id
+           LEFT JOIN priorities p ON p.id = t.priority_id
+     WHERE is_active = TRUE
+     ORDER BY is_complete, created_at DESC
   `;
   const params = [
     task.user_id,
@@ -50,7 +69,10 @@ const addTask =  (task) => {
 const getTaskById = (id) => {
   const query = `
     SELECT *,
+           t.id AS task_id,
+           l.id AS label_id,
            l.name AS label,
+           p.id AS priority_id,
            p.name AS priority
       FROM tasks t
            LEFT JOIN labels l ON l.id = t.label_id
@@ -105,14 +127,14 @@ const deleteTaskById = (id) => {
     UPDATE tasks
     SET is_active = FALSE
     WHERE id = $1
-    RETURNING *;
+    RETURNING id
   `;
   const param = [id];
 
   return db
     .query(query, param)
     .then(res => {
-      const task = task.rows[0];
+      const task = res.rows;
       if (!task) return null;
       return task;
     })

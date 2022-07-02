@@ -5,13 +5,6 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 export default function Checkboxes(props) {
 
-  const [isChecked, setIsChecked] = React.useState(props.checked);
-
-  const handleClick = (event) => {
-    const { checked } = event.target;
-    setIsChecked(() => !checked)
-  }
-
   return (
     <Checkbox
       icon={<RadioButtonUncheckedIcon color="primary" />}
@@ -21,8 +14,7 @@ export default function Checkboxes(props) {
         paddingLeft: 0,
         marginRight: "10px"
       }}
-      onClick={handleClick}
-      checked={isChecked}
+      onClick={props.handleComplete}
     />
   );
 }

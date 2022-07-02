@@ -11,12 +11,13 @@ export default function TaskList(props) {
     const taskElement = (
       <TaskListItem
         key={key}
+        task_id={value.task_id}
         title={value.title}
         dueDate={value.due_date}
         priority={value.priority}
         label={value.label}
-        isComplete={value.is_complete}
         toggle={() => props.toggle(key)}
+        handleDelete={props.handleDelete}
       />)
     taskElements.push(taskElement)
   }

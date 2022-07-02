@@ -41,44 +41,6 @@ export default function NewTaskModal(props) {
     due_date: null
   });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormData(prevFormData => {
-      return {
-        ...prevFormData,
-        [name]: value
-      }
-    })
-
-    const toEatKeywords = [/restauran/ig, /steakhous/ig, /eat/ig, /bistr/ig, /sush/ig, /pad tha/ig];
-    const toBuyKeywords = [/egg/ig, /turke/ig];
-    const toReadKeywords = [/harry pot/ig, /bookstor/ig, /book/ig];
-    const toWatchKeywords = [/movi/ig, /dr. strang/ig, /movie theate/ig, /netfli/ig, /youtub/ig]
-
-    const title = formData.title;
-    if (toEatKeywords.some(kw => title.match(kw))) {
-      setLabel("To Eat");
-    };
-
-    if (toBuyKeywords.some(kw => title.match(kw))) {
-      setLabel("To Buy");
-    };
-
-    if (toReadKeywords.some(kw => title.match(kw))) {
-      setLabel("To Read")
-    }
-
-    if (toWatchKeywords.some(kw => title.match(kw))) {
-      setLabel("To Watch")
-    }
-
-    if (title.length <= 1) {
-      setLabel()
-    }
-
-  }
-
   const [label, setLabel] = React.useState(null);
   const deleteLabel = () => setLabel();
   const handleLabelSelection = (item) => {
@@ -125,6 +87,44 @@ export default function NewTaskModal(props) {
     priorityColor = "success";
   };
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: value
+      }
+    })
+
+    const toEatKeywords = [/restauran/ig, /steakhous/ig, /eat/ig, /bistr/ig, /sush/ig, /pad tha/ig];
+    const toReadKeywords = [/harry pot/ig, /bookstor/ig, /book/ig, /read/ig];
+    const toBuyKeywords = [/egg/ig, /turke/ig, /buy/ig];
+    const toWatchKeywords = [/movi/ig, /dr. strang/ig, /movie theate/ig, /netfli/ig, /youtub/ig, /watch/ig]
+
+    const title = formData.title;
+    if (toReadKeywords.some(kw => title.match(kw))) {
+      handleLabelSelection({id: 3, name: "To Read"});
+    }
+
+    if (toBuyKeywords.some(kw => title.match(kw))) {
+      handleLabelSelection({id: 1, name: "To Buy"});
+    };
+
+    if (toEatKeywords.some(kw => title.match(kw))) {
+      handleLabelSelection({id: 2, name: "To Eat"});
+    };
+
+    if (toWatchKeywords.some(kw => title.match(kw))) {
+      handleLabelSelection({id: 4, name: "To Watch"});
+    }
+
+    if (title.length <= 1) {
+      deleteLabel()
+    }
+
+  }
+
   const handleSubmit = () => {
     fetch(
       "http://localhost:8080/api/tasks",
@@ -134,12 +134,17 @@ export default function NewTaskModal(props) {
         headers: { "Content-type": "application/json" }
       })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data)
+        props.setTasksData([
+          data,
+          ...props.tasksData
+        ])
+      })
       .catch((error) => {
         console.error('Error:', error);
       });
 
-    props.addCount()
     props.handleClose()
   }
 

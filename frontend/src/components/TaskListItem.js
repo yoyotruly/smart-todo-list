@@ -1,3 +1,4 @@
+import React from "react";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -6,25 +7,40 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import CircleCheckbox from './CircleCheckbox';
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import TagRoundedIcon from '@mui/icons-material/TagRounded';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import grey from '@mui/material/colors/grey';
 
 export default function TaskListItem(props) {
+
+  const [isComplete, setIsComplete] = React.useState(false);
+  const handleComplete = () => {
+    setIsComplete(prevIsComplete => !prevIsComplete);
+  }
+
   return (
     <Card elevation={0} sx={{backgroundColor: "inherit"}}>
 
       <Box sx={{display: "flex", alignItems: "center"}}>
-        <CircleCheckbox checked={props.isComplete}/>
+        <CircleCheckbox
+          isComplete={isComplete}
+          handleComplete={handleComplete}
+        />
 
         <Box sx={{flexGrow: 1}}>
           <CardActionArea onClick={props.toggle} sx={{width: "100%"}}>
             <CardContent>
-              <Typography variant="body1" color="text.primary" sx={{mb: "5px"}}>
-                {props.title}
-              </Typography>
+              {
+                isComplete ?
+                  <Typography variant="body1" sx={{mb: "5px", color: grey[600], textDecoration: "line-through"}} >
+                    {props.title}
+                  </Typography> :
+                  <Typography variant="body1" color="text.primary" sx={{mb: "5px"}}>
+                    {props.title}
+                  </Typography>
+              }
 
               <Box sx={{display: "flex", gap: "20px", marginTop: "10px"}}>
 
@@ -64,8 +80,8 @@ export default function TaskListItem(props) {
           </CardActionArea>
         </Box>
 
-        <IconButton aria-label="star">
-          <StarBorderOutlinedIcon />
+        <IconButton aria-label="delete" onClick={() => props.handleDelete(props.task_id)}>
+          <DeleteOutlineIcon />
         </IconButton>
 
       </Box>
