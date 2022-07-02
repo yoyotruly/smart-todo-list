@@ -6,7 +6,6 @@ const taskModel = require("../models/model.task");
 router
   .route("/")
   .get((req, res) => {
-    // const priority = req.query.priority;
     taskModel.getAllTasks()
       .then(data => res.json(data))
       .catch(err => {
@@ -44,18 +43,20 @@ router
   .put(async (req, res) => {
     try {
       const result = await taskModel.updateTaskById(req.params.id, {...req.body});
-      res.send(result);
+      res.json(result);
     } catch (error) {
       console.error(error);
     }
   })
-  .delete(async (req, res) => {
-    try {
-      const result = await taskModel.deleteTaskById(req.params.id);
-      res.send(result);
-    } catch (error) {
-      console.error(error);
-    }
+  .delete((req, res) => {
+    const { id } = req.params;
+
+    taskModel.deleteTaskById(id)
+      .then(data => res.json(data))
+      .catch(err => {
+        console.error(err)
+        res.send(err)
+      })
   })
 
 module.exports = router;
