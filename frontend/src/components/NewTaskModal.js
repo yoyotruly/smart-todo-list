@@ -98,7 +98,20 @@ export default function NewTaskModal(props) {
   };
 
   const handleSubmit = () => {
-    console.log(formData, "submitted")
+    console.log(JSON.stringify(formData), "submitted")
+
+    fetch(
+      "http://localhost:8080/api/tasks",
+      {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-type": "application/json" }
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
   return (
