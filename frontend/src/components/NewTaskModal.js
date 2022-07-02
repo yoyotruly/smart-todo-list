@@ -30,9 +30,38 @@ const newTaskModalStyle = {
 };
 
 export default function NewTaskModal(props) {
-  const [label, setLabel] = React.useState("");
-  const selectLabel = (label) => setLabel(label);
+  const [formData, setFormData] = React.useState({
+    user_id: 1,
+    title: "",
+    description: "",
+    label_id: null,
+    priority_id: null,
+    due_date: null
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: value
+      }
+    })
+  }
+
+  const [label, setLabel] = React.useState(null);
   const deleteLabel = () => setLabel();
+  const handleLabelSelection = (item) => {
+    setLabel(item.name);
+
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        label_id: item.id
+      }
+    })
+  }
 
   let labelColor;
   if (label === "To Eat") {
@@ -45,21 +74,21 @@ export default function NewTaskModal(props) {
     labelColor = "success";
   };
 
-  const [priority, setPriority] = React.useState("");
-  const selectPriority = (priority) => setPriority(priority);
-  const deletePriority = () => setPriority();
+  const [priority, setPriority] = React.useState(null);
+  const deletePriority = () => setPriority(null);
+  const handlePrioritySelection = (item) => {
+    setPriority(item.name);
 
-  const [formData, setFormData] = React.useState(
-    {title: "", description: ""}
-  );
-
-  const handleChange = (event) => {
     setFormData(prevFormData => {
       return {
         ...prevFormData,
-        [event.target.name]: event.target.value
+        priority_id: item.id
       }
     })
+  }
+
+  const handleSubmit = () => {
+    console.log(formData, "submitted")
   }
 
   return (
@@ -90,6 +119,7 @@ export default function NewTaskModal(props) {
             <TextField
               fullWidth
               name="title"
+              value={formData.title}
               label="Task Name"
               variant="filled"
               onChange={handleChange}
@@ -98,6 +128,7 @@ export default function NewTaskModal(props) {
             <TextField
               fullWidth
               name="description"
+              value={formData.description}
               label="Description"
               multiline
               rows={4}
@@ -111,17 +142,15 @@ export default function NewTaskModal(props) {
           >
             <Box sx={{display: "flex", alignItems: "center"}}>
               <ClickMenu
-                id="label"
                 icon={<TagRoundedIcon sx={{ fontSize: "20px" }} />}
+                type="label"
                 menuItems={labels}
-                selectMenuItem={selectLabel}
+                handleClick={handleLabelSelection}
               />
                 {label &&
                   <Chip
                     label={label}
-                    // onClick={handleClick}
                     onDelete={deleteLabel}
-                    // variant="outlined"
                     color={labelColor}
                     size="small"
                   />
@@ -131,14 +160,12 @@ export default function NewTaskModal(props) {
               <ClickMenu
                 icon={<FlagOutlinedIcon sx={{ fontSize: "20px" }} />}
                 menuItems={priorities}
-                selectMenuItem={selectPriority}
+                handleClick={handlePrioritySelection}
               />
               {priority &&
                 <Chip
                   label={priority}
-                  // onClick={handleClick}
                   onDelete={deletePriority}
-                  // variant="outlined"
                   size="small"
                 />
               }
@@ -162,7 +189,10 @@ export default function NewTaskModal(props) {
               <Button variant="outlined" onClick={props.handleClose}>
                 Cancel
               </Button>
-              <Button variant="contained">
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+              >
                 Add Task
               </Button>
           </CardActions>
