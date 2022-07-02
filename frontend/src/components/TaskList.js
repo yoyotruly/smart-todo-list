@@ -1,53 +1,39 @@
 import * as React from 'react';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import TaskListItem from './TaskListItem';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
-export default function TaskList() {
+export default function TaskList(props) {
+
+  const taskElements = props.tasksData.map(task => (
+    <TaskListItem
+      key={task.id}
+      title={task.title}
+      due_date={task.due_date}
+      priority={task.priority}
+      label={task.label}
+      toggle={() => props.toggle(task.id)}
+    />
+  ))
+
   return (
-    <List
-      sx={{
-        width: '100%',
-        bgcolor: "background.paper"
-      }}
-    >
+    <>
+      <AppBar
+        elevation={0}
+        sx={props.appbarStyle}
+      >
+        <Toolbar>
+          <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+            Overview
+          </Typography>
+        </Toolbar>
+      </AppBar>
 
-      <ListItem alignItems="flex-start">
-        <ListItemIcon>
-          <CheckCircleIcon fontSize="large" color="primary"/>
-        </ListItemIcon>
-        <ListItemText
-          primary="Buy ugly vegetables from the Farmer's Market this weekend"
-          secondary={
-            <>
-              Jan 7, 2022 | High Priority | To Buy
-            </>
-          }
-        />
-      </ListItem>
-
-      <Divider component="li" />
-
-      <ListItem alignItems="flex-start">
-        <ListItemIcon>
-          <RadioButtonUncheckedIcon fontSize='large'/>
-        </ListItemIcon>
-        <ListItemText
-          primary="Rewatch Hawk and Chick with the kids"
-          secondary={
-            <>
-              Jan 10, 2022 | High Priority | To Watch
-            </>
-          }
-        />
-      </ListItem>
-
-      <Divider component="li" />
-
-    </List>
+      <List sx={props.listStyle}>
+        {taskElements}
+      </List>
+    </>
   );
 }

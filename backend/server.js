@@ -6,6 +6,11 @@ const morgan = require("morgan");
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 
+const cors = require("cors");
+app.use(cors({
+  origin: "http://localhost:3000"
+}))
+
 const usersRoutes = require("./routes/users");
 const tasksRoutes = require("./routes/tasks");
 const prioritiesRoutes = require("./routes/priorities");

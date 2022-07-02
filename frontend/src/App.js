@@ -1,15 +1,10 @@
 import CssBaseline from '@mui/material/CssBaseline';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Home from "./pages/Home"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
-import Profile from "./pages/Profile"
-import Tasks from "./pages/tasks/Tasks"
-import TaskDone from "./pages/tasks/TaskDone"
-import TaskHighPriority from "./pages/tasks/TaskHighPriority"
-import TaskLabel from "./pages/tasks/TaskLabel"
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import User from './components/User';
+import TaskOverview from "./pages/tasks/Overview";
+import TaskDone from "./pages/tasks/Done";
+import TaskImportant from "./pages/tasks/Important";
+import TaskLabel from "./pages/tasks/Label";
 
 function App() {
   return (
@@ -18,12 +13,12 @@ function App() {
       <Router>
         <Routes>
           <Route path="/*" element={<User />} />
-          <Route path="profile/:userId" element={<Profile />} />
           <Route path="tasks">
-            <Route index element={<Tasks />} />
+            <Route index />
+            <Route path="overview" element={<TaskOverview />} />
             <Route path=":labelId" element={<TaskLabel />} />
             <Route path="done" element={<TaskDone />} />
-            <Route path="high" element={<TaskHighPriority />} />
+            <Route path="important" element={<TaskImportant />} />
           </Route>
         </Routes>
       </Router>
