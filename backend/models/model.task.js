@@ -124,24 +124,10 @@ const updateTaskById = (id, taskData) => {
 
 const deleteTaskById = (id) => {
   const query = `
-    WITH update AS (
-      UPDATE tasks
-      SET is_active = FALSE
-      WHERE id = $1
-      RETURNING id
-    )
-
-    SELECT *,
-           t.id AS task_id,
-           l.id AS label_id,
-           l.name AS label,
-           p.id AS priority_id,
-           p.name AS priority
-      FROM tasks t
-           LEFT JOIN labels l ON l.id = t.label_id
-           LEFT JOIN priorities p ON p.id = t.priority_id
-     WHERE is_active = TRUE
-     ORDER BY is_complete, created_at DESC
+    UPDATE tasks
+    SET is_active = FALSE
+    WHERE id = $1
+    RETURNING id
   `;
   const param = [id];
 
