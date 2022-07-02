@@ -8,6 +8,7 @@ const getAllTasks = () => {
     FROM tasks t
          LEFT JOIN labels l ON l.id = t.label_id
          LEFT JOIN priorities p ON p.id = t.priority_id
+   ORDER BY is_complete DESC, created_at
   `;
 
   return db
@@ -22,11 +23,21 @@ const getAllTasks = () => {
 
 const addTask =  (task) => {
   const query = `
-    INSERT INTO tasks
-      (user_id, priority_id, label_id, title, description, due_date)
-    VALUES
-      ($1, $2, $3, $4, $5, $6)
-    RETURNING *;
+    WITH new_task AS (
+      INSERT INTO tasks
+        (user_id, priority_id, label_id, title, description, due_date)
+      VALUES
+        ($1, $2, $3, $4, $5, $6)
+      RETURNING *
+    )
+
+    SELECT *,
+           l.name AS label,
+           p.name AS priority
+      FROM new_task t
+           LEFT JOIN labels l ON l.id = t.label_id
+           LEFT JOIN priorities p ON p.id = t.priority_id
+     ORDER BY is_complete DESC, created_at
   `;
   const params = [
     task.user_id,

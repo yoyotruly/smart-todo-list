@@ -27,13 +27,6 @@ function Overview() {
   const openModal = () => setOpenModal(true);
   const closeModal = () => setOpenModal(false);
 
-  const [count, setCount] = React.useState(0);
-  const addCount = () => {
-    console.log(count)
-    setCount((prevCount) => prevCount + 1);
-    console.log(count)
-  }
-
   return (
     <div>
       <TopBar />
@@ -47,7 +40,8 @@ function Overview() {
       <NewTaskModal
         isOpen={isOpen}
         handleClose={closeModal}
-        addCount={addCount}
+        tasksData={tasksData}
+        setTasksData={setTasksData}
       />
     </div>
   )
