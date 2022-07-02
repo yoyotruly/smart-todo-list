@@ -7,7 +7,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import CircleCheckbox from './CircleCheckbox';
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import TagRoundedIcon from '@mui/icons-material/TagRounded';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
