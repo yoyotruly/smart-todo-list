@@ -2,9 +2,8 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { grey } from '@mui/material/colors';
+import grey from '@mui/material/colors/grey';
 
 export default function NavBar() {
   return (
