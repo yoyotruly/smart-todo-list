@@ -34,7 +34,7 @@ export default function TaskListItem(props) {
             <CardContent>
               {
                 isComplete ?
-                  <Typography variant="body1" color="text.secondary" sx={{mb: "5px", textDecoration: "line-through"}} >
+                  <Typography variant="body1" sx={{mb: "5px", color: grey[600], textDecoration: "line-through"}} >
                     {props.title}
                   </Typography> :
                   <Typography variant="body1" color="text.primary" sx={{mb: "5px"}}>
