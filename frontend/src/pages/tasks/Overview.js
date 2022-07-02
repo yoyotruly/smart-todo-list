@@ -14,15 +14,31 @@ const addButtonStyles = {
 
 
 function Overview() {
+  const [tasksData, setTasksData] = React.useState({});
+
+  React.useEffect(() => {
+    fetch(`http://localhost:8080/api/tasks`)
+    .then(res => res.json())
+    .then(data => setTasksData(data))
+  }, [])
+
+
   const [isOpen, setOpenModal] = React.useState(false);
   const openModal = () => setOpenModal(true);
   const closeModal = () => setOpenModal(false);
+
+  const [count, setCount] = React.useState(0);
+  const addCount = () => {
+    console.log(count)
+    setCount((prevCount) => prevCount + 1);
+    console.log(count)
+  }
 
   return (
     <div>
       <TopBar />
       <LeftSidebar />
-      <MainContent />
+      <MainContent tasksData={tasksData}/>
 
       <AddButton
         sx={addButtonStyles}
@@ -31,6 +47,7 @@ function Overview() {
       <NewTaskModal
         isOpen={isOpen}
         handleClose={closeModal}
+        addCount={addCount}
       />
     </div>
   )
